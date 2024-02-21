@@ -81,11 +81,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
