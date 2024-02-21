@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useInit, useView } from "hooks";
 import { MessageToast, MessageType } from "types";
-import "styles/toast.css";
+import "../styles/toast.css";
 
 export function Toast() {
   const timer = useRef<NodeJS.Timeout>();

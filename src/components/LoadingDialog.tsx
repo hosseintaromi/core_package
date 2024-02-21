@@ -5,7 +5,7 @@ import {
   MessageLoadingViewModel,
   MessageLoadingResponseType,
 } from "../@types/commonView";
-import "styles/loadingButton.css";
+import "../styles/loadingButton.css";
 
 export function LoadingDialog() {
   const [loadingEnd, setLoadingEnd] = useState<
