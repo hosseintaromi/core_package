@@ -2,16 +2,8 @@ import React, { useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useInit, useViewManage } from "hooks";
 import { setStyle, bezier, closeView } from "utils";
-import { ViewEvent } from "types";
+import { OverlayPositionType, ViewEvent } from "types";
 import { ViewComponent } from "../_index";
-
-export type OverlayPositionType =
-  | "TopLeft"
-  | "TopCenter"
-  | "TopRight"
-  | "BottomLeft"
-  | "BottomCenter"
-  | "BottomRight";
 
 interface OverlayParamsType {
   target: HTMLElement;
