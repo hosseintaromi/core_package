@@ -18,6 +18,7 @@
     "sourceMap": false,
     "skipLibCheck": true,
     "noImplicitAny": true,
+    "importHelpers": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -30,8 +31,30 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
+    "baseUrl": "./",
+    "paths": {
+      "types": [
+        "src/@types/_index"
+      ],
+      "components": [
+        "src/components/_index"
+      ],
+      "hooks": [
+        "src/hooks/_index"
+      ],
+      "utils": [
+        "src/utils/_index"
+      ],
+      "context/*": [
+        "src/context/*"
+      ],
+      "styles/*": [
+        "src/styles/*"
+      ],
+    }
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
   ]
 }
