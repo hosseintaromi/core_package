@@ -31,7 +31,6 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-react-app": "^7.0.1",
     "eslint-import-resolver-typescript": "^3.4.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -56,6 +55,8 @@
     "@storybook/react": "^7.5.1",
     "@storybook/react-webpack5": "^7.5.1",
     "@storybook/testing-library": "^0.2.2",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "commit-and-tag-version": "^12.2.0",
     "identity-obj-proxy": "^3.0.0",
     "react": "^18.2.0",
@@ -82,8 +83,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "lint-staged": {
