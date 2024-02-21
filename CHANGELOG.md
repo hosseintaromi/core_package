@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2-alpha.8](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.6...v0.1.2-alpha.8) (2024-02-21)
+
+
+### Bug Fixes
+
+* remove unnessery code from package json related to eslint ([cdf7c3b](https://gitlab.com/aseman/web/packages-core/commit/cdf7c3b0ffc9e96b9f6e4ddea3bf55c8aee035c2))
+
+## [0.1.2-alpha.7](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.6...v0.1.2-alpha.7) (2024-02-21)
+
+
+### Bug Fixes
+
+* remove unnessery code from package json related to eslint ([cdf7c3b](https://gitlab.com/aseman/web/packages-core/commit/cdf7c3b0ffc9e96b9f6e4ddea3bf55c8aee035c2))
+
 ## [0.1.2-alpha.6](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.5...v0.1.2-alpha.6) (2024-02-21)
 
 
