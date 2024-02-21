@@ -7,7 +7,6 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
-  "sideEffects": false,
   "directories": {
     "lib": "dist"
   },
@@ -17,11 +16,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "react-error-boundary": "^4.0.11"
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
