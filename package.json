@@ -2,6 +2,8 @@
   "name": "@pouyan-web/core",
   "version": "0.1.2-alpha.0",
   "description": "core application for navigation in react projects",
+  "license": "ISC",
+  "author": "@pouyan-web",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
