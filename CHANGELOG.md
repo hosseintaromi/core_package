@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2-alpha.2](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.1...v0.1.2-alpha.2) (2024-02-21)
+
+
+### Bug Fixes
+
+* :lipstick: fix style file import ([789d37c](https://gitlab.com/aseman/web/packages-core/commit/789d37c1544ca6ac0e7a0953bf3f562c51306215))
+
 ## [0.1.2-alpha.1](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.0...v0.1.2-alpha.1) (2024-02-21)
 
 ## 0.1.2-alpha.0 (2024-02-21)
