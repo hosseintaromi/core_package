@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2-alpha.6](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.5...v0.1.2-alpha.6) (2024-02-21)
+
+
+### Bug Fixes
+
+* :rotating_light: handle linter error and warns ([5fbd8e5](https://gitlab.com/aseman/web/packages-core/commit/5fbd8e52c6c6a7a6a6440277f4d6eba21d2de735))
+
 ## [0.1.2-alpha.5](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.4...v0.1.2-alpha.5) (2024-02-21)
 
 ## [0.1.2-alpha.4](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.3...v0.1.2-alpha.4) (2024-02-21)
