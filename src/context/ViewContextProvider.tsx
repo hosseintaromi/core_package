@@ -93,7 +93,7 @@ export const ViewContextProvider = memo(
           listenEvents,
           emitEvent,
           close,
-          getViewData: getViewData,
+          getViewData,
           openView: open as any,
         }}
       >

@@ -1,12 +1,12 @@
-var NEWTON_ITERATIONS = 4;
-var NEWTON_MIN_SLOPE = 0.001;
-var SUBDIVISION_PRECISION = 0.0000001;
-var SUBDIVISION_MAX_ITERATIONS = 10;
+let NEWTON_ITERATIONS = 4;
+let NEWTON_MIN_SLOPE = 0.001;
+let SUBDIVISION_PRECISION = 0.0000001;
+let SUBDIVISION_MAX_ITERATIONS = 10;
 
-var kSplineTableSize = 11;
-var kSampleStepSize = 1.0 / (kSplineTableSize - 1.0);
+let kSplineTableSize = 11;
+let kSampleStepSize = 1.0 / (kSplineTableSize - 1.0);
 
-var float32ArraySupported = typeof Float32Array === "function";
+let float32ArraySupported = typeof Float32Array === "function";
 
 function A(aA1: number, aA2: number) {
   return 1.0 - 3.0 * aA2 + 3.0 * aA1;
@@ -35,9 +35,9 @@ function binarySubdivide(
   mX1: number,
   mX2: number,
 ) {
-  var currentX,
-    currentT,
-    i = 0;
+  let currentX;
+  let currentT;
+  let i = 0;
   do {
     currentT = aA + (aB - aA) / 2.0;
     currentX = calcBezier(currentT, mX1, mX2) - aX;
@@ -59,12 +59,12 @@ function newtonRaphsonIterate(
   mX1: number,
   mX2: number,
 ) {
-  for (var i = 0; i < NEWTON_ITERATIONS; ++i) {
-    var currentSlope = getSlope(aGuessT, mX1, mX2);
+  for (let i = 0; i < NEWTON_ITERATIONS; ++i) {
+    let currentSlope = getSlope(aGuessT, mX1, mX2);
     if (currentSlope === 0.0) {
       return aGuessT;
     }
-    var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
+    let currentX = calcBezier(aGuessT, mX1, mX2) - aX;
     aGuessT -= currentX / currentSlope;
   }
   return aGuessT;
@@ -75,7 +75,7 @@ function LinearEasing(x: number) {
 }
 
 export function bezier(mX1: number, mY1: number, mX2: number, mY2: number) {
-  if (!(0 <= mX1 && mX1 <= 1 && 0 <= mX2 && mX2 <= 1)) {
+  if (!(mX1 >= 0 && mX1 <= 1 && mX2 >= 0 && mX2 <= 1)) {
     throw new Error("bezier x values must be in [0, 1] range");
   }
   if (mX1 === mY1 && mX2 === mY2) {
@@ -83,17 +83,17 @@ export function bezier(mX1: number, mY1: number, mX2: number, mY2: number) {
   }
 
   // Precompute samples table
-  var sampleValues = float32ArraySupported
+  let sampleValues = float32ArraySupported
     ? new Float32Array(kSplineTableSize)
     : new Array(kSplineTableSize);
-  for (var i = 0; i < kSplineTableSize; ++i) {
+  for (let i = 0; i < kSplineTableSize; ++i) {
     sampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
   }
 
   function getTForX(aX: number) {
-    var intervalStart = 0.0;
-    var currentSample = 1;
-    var lastSample = kSplineTableSize - 1;
+    let intervalStart = 0.0;
+    let currentSample = 1;
+    let lastSample = kSplineTableSize - 1;
 
     for (
       ;
@@ -105,25 +105,25 @@ export function bezier(mX1: number, mY1: number, mX2: number, mY2: number) {
     --currentSample;
 
     // Interpolate to provide an initial guess for t
-    var dist =
+    let dist =
       (aX - sampleValues[currentSample]) /
       (sampleValues[currentSample + 1] - sampleValues[currentSample]);
-    var guessForT = intervalStart + dist * kSampleStepSize;
+    let guessForT = intervalStart + dist * kSampleStepSize;
 
-    var initialSlope = getSlope(guessForT, mX1, mX2);
+    let initialSlope = getSlope(guessForT, mX1, mX2);
     if (initialSlope >= NEWTON_MIN_SLOPE) {
       return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
-    } else if (initialSlope === 0.0) {
-      return guessForT;
-    } else {
-      return binarySubdivide(
-        aX,
-        intervalStart,
-        intervalStart + kSampleStepSize,
-        mX1,
-        mX2,
-      );
     }
+    if (initialSlope === 0.0) {
+      return guessForT;
+    }
+    return binarySubdivide(
+      aX,
+      intervalStart,
+      intervalStart + kSampleStepSize,
+      mX1,
+      mX2,
+    );
   }
 
   return function BezierEasing(x: number) {

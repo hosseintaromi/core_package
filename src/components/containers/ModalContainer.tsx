@@ -19,15 +19,15 @@ export const ModalContainer = () => {
         const newViewStyle = newView.ref.style;
         newViewStyle.display = "block";
         newViewStyle.opacity = "0";
-        newViewStyle.marginTop = -newView.ref.offsetHeight / 2 + "px";
+        newViewStyle.marginTop = `${-newView.ref.offsetHeight / 2}px`;
         const length = viewsInfo.length;
-        newViewStyle.zIndex = length + 1 + "";
+        newViewStyle.zIndex = `${length + 1}`;
         newViewStyle.transform = "translateY(20%)";
 
         if (prevView?.ref) {
-          prevView.ref.style.zIndex = length - 1 + "";
+          prevView.ref.style.zIndex = `${length - 1}`;
         }
-        backDropRef.current.style.zIndex = length + "";
+        backDropRef.current.style.zIndex = `${length}`;
       },
       animate(t, newView, prevView) {
         const p = slideIn(t);
@@ -47,7 +47,7 @@ export const ModalContainer = () => {
         const activeViewStyle = activeViewEl?.ref.style;
         if (activeViewStyle) {
           activeViewStyle.opacity = "0";
-          activeViewStyle.zIndex = viewsInfo.length + 1 + "";
+          activeViewStyle.zIndex = `${viewsInfo.length + 1}`;
         }
         closedViewStyle.opacity = "1";
       },

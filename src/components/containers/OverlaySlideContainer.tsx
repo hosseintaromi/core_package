@@ -27,11 +27,11 @@ export const OverlaySlideContainer = <T, U>({
   const doingRef = useRef<boolean>(false);
   const hoverTimerRef = useRef<NodeJS.Timeout>();
   const isHoverRef = useRef<boolean>();
-  const containerType = "overlay-inline-" + Date.now();
+  const containerType = `overlay-inline-${Date.now()}`;
   let heightDef = 0;
 
   const setContainerHeight = (height: number) => {
-    containerRef.current.style.height = height + "px";
+    containerRef.current.style.height = `${height}px`;
   };
 
   const setContainerOpacity = (opacity: number) => {

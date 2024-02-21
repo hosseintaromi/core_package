@@ -20,13 +20,13 @@ export const BottomSheetContainer = () => {
         newViewStyle.display = "block";
         newViewStyle.opacity = "0";
         const length = viewsInfo.length;
-        newViewStyle.zIndex = length + 1 + "";
+        newViewStyle.zIndex = `${length + 1}`;
         newViewStyle.transform = "translateY(100%)";
 
         if (prevView?.ref) {
-          prevView.ref.style.zIndex = length - 1 + "";
+          prevView.ref.style.zIndex = `${length - 1}`;
         }
-        backDropRefHook.current.style.zIndex = length + "";
+        backDropRefHook.current.style.zIndex = `${length}`;
       },
       animate(t, newView, prevView) {
         const p = slideIn(t);
@@ -46,7 +46,7 @@ export const BottomSheetContainer = () => {
         const activeViewStyle = activeViewEl?.ref.style;
         if (activeViewStyle) {
           activeViewStyle.opacity = "0";
-          activeViewStyle.zIndex = viewsInfo.length + 1 + "";
+          activeViewStyle.zIndex = `${viewsInfo.length + 1}`;
         }
         closedViewStyle.opacity = "1";
       },
@@ -77,7 +77,7 @@ export const BottomSheetContainer = () => {
       animate(t, _closedView, newView) {
         if (newView?.view.type === ViewContainerType.Modal) {
           const p = slideIn(t);
-          backDropRefHook.current.style.opacity = p + "";
+          backDropRefHook.current.style.opacity = `${p}`;
         }
       },
     } as ViewEvent,
@@ -86,7 +86,7 @@ export const BottomSheetContainer = () => {
       animate(t, _closedView, newView) {
         if (newView?.view.type === ViewContainerType.Modal) {
           const p = slideIn(t);
-          backDropRefHook.current.style.opacity = 1 - p + "";
+          backDropRefHook.current.style.opacity = `${1 - p}`;
         }
       },
     } as ViewEvent,

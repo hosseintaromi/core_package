@@ -29,7 +29,7 @@ export function requestAnimation(
       canceled?.();
       return;
     }
-    var p = Math.min(1, (Date.now() - currentTime) / speed);
+    let p = Math.min(1, (Date.now() - currentTime) / speed);
     animate(Math.floor(p * 1000) / 1000);
     if (p < 1) {
       requestAnimFrame(tick);

@@ -1,5 +1,5 @@
-import { bezier } from "./bezier";
 import type { ViewEvent } from "types";
+import { bezier } from "./bezier";
 
 const slideIn = bezier(0.25, 1, 0.5, 1);
 
@@ -203,7 +203,7 @@ export const onOpenToastConfig: ViewEvent = {
   },
   animate(t, newView, prevView) {
     const newViewStyle = newView.ref.style;
-    newViewStyle.opacity = t + "";
+    newViewStyle.opacity = `${t}`;
   },
 };
 
@@ -216,7 +216,7 @@ export const onCloseToastConfig: ViewEvent = {
   animate(t, closeView, activeView) {
     const p = slideIn(t);
     const closedViewStyle = closeView.ref.style;
-    closedViewStyle.opacity = 1 - t + "";
+    closedViewStyle.opacity = `${1 - t}`;
     const offsetHeight = closeView.ref.offsetHeight;
     closedViewStyle.marginTop = `${-offsetHeight * p}px`;
   },

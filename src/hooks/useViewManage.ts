@@ -101,7 +101,7 @@ export const useViewManage = (
                   }
                 : undefined,
               openConfig,
-              { disableAnimate: disableAnimate },
+              { disableAnimate },
             );
             if (currentViewInfo) {
               currentViewInfo.events?.onLeave?.({
@@ -157,7 +157,7 @@ export const useViewManage = (
             }
           : undefined,
         closeConfig,
-        { disableAnimate: disableAnimate, closeType },
+        { disableAnimate, closeType },
       );
 
       if (activeViewInfo) {
@@ -232,7 +232,7 @@ export const useViewManage = (
       );
       if (eventType === ChangeContainerEventType.onEnter) {
         activeViewInfo.events?.onEnter?.({
-          fromView: fromView,
+          fromView,
         });
       } else if (eventType === ChangeContainerEventType.onLeave) {
         activeViewInfo.events?.onLeave?.({

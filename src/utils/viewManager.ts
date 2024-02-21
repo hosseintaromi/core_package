@@ -1,4 +1,3 @@
-import { listenBack, unListenBack } from "./historyManager";
 import {
   ViewContainerType,
   ChangeContainerEventType,
@@ -7,6 +6,7 @@ import {
   ViewContainerDataType,
   ViewType,
 } from "types";
+import { listenBack, unListenBack } from "./historyManager";
 
 const viewContainers: { [name: string]: ViewContainerDataType } = {};
 const loadedViewsStack: ViewType<any>[] = [];
@@ -37,9 +37,9 @@ export function registerContainer(
     views: [],
     containerOrder,
     config,
-    openView: openView,
-    closeView: closeView,
-    activateView: activateView,
+    openView,
+    closeView,
+    activateView,
     changeContainer,
   };
 }
@@ -57,7 +57,7 @@ export async function openView<T = any>(
 ) {
   try {
     if (!view.id) {
-      view.id = view.type + "-" + Date.now();
+      view.id = `${view.type}-${Date.now()}`;
     }
     const container = viewContainers[view.type];
     if (!container) {
@@ -135,7 +135,7 @@ export async function closeView<T>(
       return;
     }
     if (isMasterView()) {
-      //return;
+      // return;
     }
     const closingView = container.views[index];
     const topView = getTopViewFromStack([closingView.id]);

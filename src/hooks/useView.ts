@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { useInit } from "./useInit";
 import { ViewContext } from "context/ViewContextProvider";
 import type { CloseType, ViewEvents, ViewType } from "types";
+import { useInit } from "./useInit";
 
 export const useView = <T = any>(events?: ViewEvents) => {
   const viewContext = useContext(ViewContext);

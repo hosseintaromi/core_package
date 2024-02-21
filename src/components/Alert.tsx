@@ -7,12 +7,9 @@ export function Alert() {
 
   return (
     <div
-      className={
-        "alert " +
-        (viewData.type === MessageType.Success
-          ? "alert-success"
-          : "alert-error")
-      }
+      className={`alert ${
+        viewData.type === MessageType.Success ? "alert-success" : "alert-error"
+      }`}
     >
       {viewData.type === MessageType.Error ? (
         <div className="sa-icon sa-error">
@@ -36,12 +33,9 @@ export function Alert() {
       )}
       <div className="modal-message">{viewData.message}</div>
       <button
-        className={
-          "btn " +
-          (viewData.type === MessageType.Success
-            ? " btn-success"
-            : " btn-error")
-        }
+        className={`btn ${
+          viewData.type === MessageType.Success ? " btn-success" : " btn-error"
+        }`}
         onClick={close}
       >
         بستن

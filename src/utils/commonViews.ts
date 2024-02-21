@@ -1,5 +1,4 @@
 import { Alert, Confirm, LoadingDialog, Toast } from "components";
-import { openView } from "./viewManager";
 import {
   MessageAlert,
   MessageConfirm,
@@ -8,11 +7,12 @@ import {
   MessageToast,
   ViewContainerType,
 } from "types";
+import { openView } from "./viewManager";
 
 export function openToast(message: MessageToast) {
   openView<MessageToast>({
     type: ViewContainerType.Toast,
-    id: "toast-" + Date.now(),
+    id: `toast-${Date.now()}`,
     data: message,
     component: Toast,
     className: "toast-message",
@@ -23,7 +23,7 @@ export async function openAlert(message: MessageAlert) {
   return new Promise((resolve) => {
     openView<MessageAlert>({
       type: ViewContainerType.Tab,
-      id: "alert-" + Date.now(),
+      id: `alert-${Date.now()}`,
       component: Alert,
       data: message,
       className: "alert-modal",
@@ -45,8 +45,8 @@ export async function openCustomConfirm<T>(
   return new Promise((resolve, reject) => {
     openView<T>({
       type: ViewContainerType.Modal,
-      id: "confirm-" + Date.now(),
-      component: component,
+      id: `confirm-${Date.now()}`,
+      component,
       className: "confirm-modal",
       data,
 
@@ -64,7 +64,7 @@ export function openLoading(
   const model = message as MessageLoadingViewModel;
   openView<MessageLoadingViewModel>({
     type: viewType || ViewContainerType.Modal,
-    id: "loading-" + Date.now(),
+    id: `loading-${Date.now()}`,
     data: model,
     component: LoadingDialog,
     className: "loading-message",

@@ -23,12 +23,9 @@ export function Toast() {
 
   return (
     <div
-      className={
-        "toast " +
-        (viewData.type === MessageType.Success
-          ? "toast-success"
-          : "toast-danger")
-      }
+      className={`toast ${
+        viewData.type === MessageType.Success ? "toast-success" : "toast-danger"
+      }`}
     >
       <div className="toast-body">
         {viewData.message}

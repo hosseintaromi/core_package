@@ -71,8 +71,7 @@ export const useOverlay = <T, U>(overlayData: OverlayData<T, U>) => {
         overlayData.onClose?.(res);
       },
       options: {
-        disableBackdrop:
-          overlayData.backdrop === undefined || true ? true : false,
+        disableBackdrop: !!(overlayData.backdrop === undefined || true),
         params: {
           event,
           target:

@@ -45,7 +45,7 @@ export const SlideContainer = <T, U>({
 }: {
   config: SlideInlineData<T, U>;
 }) => {
-  const containerType = "slide-" + Date.now();
+  const containerType = `slide-${Date.now()}`;
   const lastViewIndex = config.components.length - 1;
   const effectivePercent = 35;
   const maxDuration = 500;
@@ -87,19 +87,19 @@ export const SlideContainer = <T, U>({
   });
 
   const openConfigView = useFn(async (index: number) => {
-    let viewInfo = viewsInfo.find((x) => x.id === index + "");
+    let viewInfo = viewsInfo.find((x) => x.id === `${index}`);
     if (viewInfo) {
       return;
     }
     await openView({
-      id: index + "",
+      id: `${index}`,
       type: containerType,
       component: config.components[index].component,
       data: config.data,
       className: config.className,
       options: { disableAnimate: true, inBackground: index > 0 },
     });
-    viewInfo = viewsInfo.find((x) => x.id === index + "");
+    viewInfo = viewsInfo.find((x) => x.id === `${index}`);
     const ref = viewInfo?.elRef;
     ref!.style.display = "block";
     if (index > 0) {
@@ -111,7 +111,7 @@ export const SlideContainer = <T, U>({
     if (index < 0 || index > lastViewIndex) {
       return;
     }
-    const view = viewsInfo.find((x) => x.id === index + "");
+    const view = viewsInfo.find((x) => x.id === `${index}`);
     if (!view) {
       openConfigView(index);
     }

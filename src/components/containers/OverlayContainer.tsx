@@ -29,8 +29,8 @@ export const OverlayContainer = () => {
     const height = overlayEl.offsetHeight;
     const css = (left: number, top: number) => {
       setStyle(overlayEl, {
-        left: left + "px",
-        top: top + "px",
+        left: `${left}px`,
+        top: `${top}px`,
       });
     };
     switch (position) {
@@ -111,7 +111,7 @@ export const OverlayContainer = () => {
         newViewStyle.opacity = `${p}`;
         if (!options?.disableBackdrop) {
           setStyle(backDropRef.current, {
-            opacity: p + "",
+            opacity: `${p}`,
           });
         }
       },

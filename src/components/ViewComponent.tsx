@@ -14,7 +14,7 @@ export function ViewComponent({ viewInfo }: { viewInfo: ViewInfo }) {
   return (
     <div
       ref={elRef}
-      className={"view-wrapper" + (className ? ` ${className}` : "")}
+      className={`view-wrapper${className ? ` ${className}` : ""}`}
     >
       {viewInfo.view.component()}
     </div>
