@@ -135,8 +135,8 @@ export async function closeView<T>(
     if (index < 0) {
       return;
     }
-    if (isMasterView()) {
-      // return;
+    if (isMasterView(containerType, container)) {
+      return;
     }
     const closingView = container.views[index];
     const topView = getTopViewFromStack([closingView.id]);
@@ -229,8 +229,8 @@ function removeFromLoadedViewStack(view: ViewType<any>, closeType: CloseType) {
   }
 }
 
-function isMasterView() {
-  return loadedViewsStack.length < 2;
+function isMasterView(type: string, container: ViewContainerDataType) {
+  return type === "MasterTab" && container.views.length < 2;
 }
 
 function moveViewToTop(view: ViewType<any>) {
