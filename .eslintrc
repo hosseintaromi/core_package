@@ -1,9 +1,6 @@
 {
   "root": true,
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
+  "env": {},
   "extends": [
     "airbnb",
     "airbnb-typescript",
@@ -13,8 +10,14 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["prettier"],
-  "ignorePatterns": ["build/", "dist/", "node_modules/"],
+  "plugins": [
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "build/",
+    "dist/",
+    "node_modules/"
+  ],
   "rules": {
     "react/jsx-key": 2,
     "arrow-body-style": 1,
@@ -43,7 +46,9 @@
     "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "no-restricted-exports": "off",
-    "no-restricted-imports": ["error"],
+    "no-restricted-imports": [
+      "error"
+    ],
     "no-lonely-if": "off",
     "no-underscore-dangle": "off",
     "prefer-const": "off",
@@ -59,7 +64,9 @@
     "import/no-cycle": "off",
     "no-console": "warn",
     "import/no-anonymous-default-export": "off",
-    "prettier/prettier": ["warn"],
+    "prettier/prettier": [
+      "warn"
+    ],
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
     "no-prototype-builtins": "off",
     // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
