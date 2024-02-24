@@ -54,6 +54,7 @@
     "no-param-reassign": "off",
     "prefer-destructuring": "off",
     "no-restricted-syntax": "off",
+    "max-classes-per-file": "off",
     "guard-for-in": "off",
     "import/no-cycle": "off",
     "no-console": "warn",

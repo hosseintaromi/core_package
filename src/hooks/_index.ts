@@ -7,3 +7,4 @@ export * from "./useOverlay";
 export * from "./useDisableSelection";
 export * from "./useAnimate";
 export * from "./useContextEvents";
+export * from "./useEventObserver";
