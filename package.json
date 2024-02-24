@@ -77,6 +77,7 @@
     "storybook:start": "storybook dev",
     "storybook:build": "storybook build",
     "release": "commit-and-tag-version",
+    "release:alpha": "npm run release -- --prerelease alpha",
     "release:publish": "npm run build && npm run release && npm publish",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
