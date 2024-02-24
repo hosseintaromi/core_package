@@ -9,3 +9,6 @@ export * from "./useAnimate";
 export * from "./useClickAsync";
 export * from "./useContextEvents";
 export * from "./useEventObserver";
+export * from "./useTimeout";
+export * from "./useObserverProp";
+export * from "./useObserver";
