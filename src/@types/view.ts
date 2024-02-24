@@ -71,6 +71,7 @@ export interface ViewType<T> {
   component: (props?: any) => JSX.Element;
   onClose?: (res?: any) => void;
   onClosed?: (res?: any) => void;
+  onOpen?: () => void;
   onOpened?: () => void;
   options?: ViewConfig;
 }
