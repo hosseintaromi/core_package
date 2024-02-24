@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
-import { activateTabConfig, bezier, closeView } from "utils";
+import { bezier, closeView } from "utils";
 import { ViewContainerType, ViewEvent } from "types";
+import { activateTabConfig } from "src/utils/viewAnimations";
 import { Scrollable, ViewComponent } from "../_index";
 
 export const BottomSheetContainer = () => {

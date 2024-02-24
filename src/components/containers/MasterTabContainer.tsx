@@ -1,13 +1,13 @@
 import React from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
+import { useViewManage } from "hooks";
+import { ViewContainerType } from "types";
 import {
   activateTabConfig,
   closeTabAnimationConfig,
   onEnterTabContainerConfig,
   onLeaveContainerConfig,
-} from "utils";
-import { useViewManage } from "hooks";
-import { ViewContainerType } from "types";
+} from "src/utils/viewAnimations";
 import { ViewComponent } from "../_index";
 
 export const MasterTabContainer = () => {
