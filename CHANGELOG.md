@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2-alpha.10](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.9...v0.1.2-alpha.10) (2024-02-24)
+
+
+### Features
+
+* add common views to package options ([504ec60](https://gitlab.com/aseman/web/packages-core/commit/504ec6095fce055bad53831d7220d954de32d319))
+
 ## [0.1.2-alpha.9](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.8...v0.1.2-alpha.9) (2024-02-24)
 
 
