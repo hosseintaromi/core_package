@@ -34,13 +34,18 @@ export const useOverlay = <T, U>(overlayData: OverlayData<T, U>) => {
   const elRef: MutableRefObject<HTMLElement | { toggle: (e: Event) => void }> =
     {
       current: {
-        toggle: (e: Event) => {
-          if (isOpenRef.current) {
+        toggle: (e?: Event) => {
+          if (!e && isOpenRef.current) {
+            isOpenRef.current = false;
+            closeView(viewId, "Overlay");
+          } else if (isOpenRef.current) {
             isOpenRef.current = false;
             closeView(viewId, "Overlay");
           } else {
             isOpenRef.current = true;
-            openMenu(e);
+            if (e) {
+              openMenu(e);
+            }
           }
         },
       },
@@ -62,12 +67,14 @@ export const useOverlay = <T, U>(overlayData: OverlayData<T, U>) => {
 
   const openMenu = (event: Event | TouchEvent) => {
     openView<T>({
+      id: viewId,
       type: "Overlay",
       component: overlayData.component,
       data: overlayData.mapDataTo
         ? overlayData.mapDataTo(overlayData.data)
         : overlayData.data,
       onClosed: (res?: U) => {
+        isOpenRef.current = false;
         overlayData.onClose?.(res);
       },
       options: {
