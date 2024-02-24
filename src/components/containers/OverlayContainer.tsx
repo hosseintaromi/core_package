@@ -77,7 +77,6 @@ export const OverlayContainer = () => {
       duration: 500,
       start(newView) {
         const params: OverlayParamsType = newView.view.options?.params;
-        console.log(params);
         if (params.target) {
           params.target.classList?.add("is-open");
         }

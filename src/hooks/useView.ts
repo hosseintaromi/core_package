@@ -15,12 +15,12 @@ export const useView = <T = any>(events?: ViewEvents) => {
     }
   });
 
-  const close = (res?: any) => {
-    closeByType("Current", res);
-  };
-
   const closeByType = (closeType: CloseType, res?: any) => {
     viewContext.close?.(closeType, res);
+  };
+
+  const close = (res?: any) => {
+    closeByType("Current", res);
   };
 
   const openView = (view: Omit<ViewType<T>, "type">) => {

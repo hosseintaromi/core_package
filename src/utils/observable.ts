@@ -90,7 +90,7 @@ export class EventObservable<T, U = any> extends Observable<T> {
   }
 }
 
-export class ObjectObservable<T, U = any> extends EventObservable<T> {
+export class ObjectObservable<T> extends EventObservable<T> {
   public update(subject: T) {
     this.emit("Update", subject, true);
   }

@@ -41,7 +41,7 @@ export const useViewManage = (
       event?: ViewEvent,
       config?: T,
     ) =>
-      new Promise<any>((resolve, reject) => {
+      new Promise<any>((resolve) => {
         if (!event) {
           resolve(true);
         }
@@ -69,7 +69,7 @@ export const useViewManage = (
 
   const openView = useFn(
     (newView: ViewType<any>) =>
-      new Promise((resolve, reject) => {
+      new Promise((resolve) => {
         const newPgeInfo: ViewInfo = {
           id: newView.id,
           view: newView,

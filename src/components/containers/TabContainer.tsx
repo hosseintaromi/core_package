@@ -1,7 +1,10 @@
 import React from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
-import { closeTabAnimationConfig, openTabContainerConfig } from "utils";
+import {
+  closeTabAnimationConfig,
+  openTabContainerConfig,
+} from "src/utils/viewAnimations";
 import { ViewContainerType } from "types";
 import { ViewComponent } from "../_index";
 

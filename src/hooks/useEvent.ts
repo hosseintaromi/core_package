@@ -17,6 +17,14 @@ export enum EventType {
   VerticalSwipe = "VerticalSwipe",
 }
 
+export interface TouchEvent {
+  x: number;
+  y: number;
+  moveX: number;
+  moveY: number;
+  e: Event;
+}
+
 export interface EventHandler {
   onTouchStart?: (e: TouchEvent) => void;
   onTouchMove?: (e: TouchEvent) => void;
@@ -27,14 +35,6 @@ export interface EventHandler {
   onPress?: (e: Event) => void;
   onMouseover?: (e: Event) => void;
   onMouseout?: (e: Event) => void;
-}
-
-export interface TouchEvent {
-  x: number;
-  y: number;
-  moveX: number;
-  moveY: number;
-  e: Event;
 }
 
 export interface Position {
@@ -74,6 +74,10 @@ export const useEvent = (
     } as TouchEvent;
   };
 
+  const resetTouchRef = () => {
+    touchRef.current = [];
+  };
+
   const handleTap = (e: Event) => {
     const touches = touchRef.current;
     if (touches.length !== 1 || isTouchMoveRef.current) {
@@ -106,6 +110,15 @@ export const useEvent = (
     if (touches.length === 2 && touches[1] - touches[0] < MAX_TAP_TIME) {
       events?.onDoubleClick?.(e);
     }
+  };
+
+  const clearTimer = () => {
+    const timer = timeoutRef.current;
+    if (!timer) {
+      return;
+    }
+    clearTimeout(timer);
+    timeoutRef.current = undefined;
   };
 
   const handlePress = (e: Event) => {
@@ -164,53 +177,6 @@ export const useEvent = (
     // }, MIN_MOVE_TIME);
   };
 
-  const resetTouchRef = () => {
-    touchRef.current = [];
-  };
-
-  const handleTouchStart = useFn((e: Event) => {
-    addListener("mouseup", handleTouchEnd);
-    addListener("touchend", handleTouchEnd);
-    const touches = touchRef.current;
-    if (touches.length > 2) {
-      touchRef.current.length = 0;
-    }
-    touches.push(getCurrentTime());
-    startPositionRef.current = touchEventRef.current = getTouchEvent(e);
-
-    listenMove(true);
-    handleStartEvents(e);
-  });
-
-  const handleTouchEnd = useFn((e: Event) => {
-    handleEndEvents(e);
-    removeListener("mouseup", handleTouchEnd);
-    removeListener("touchend", handleTouchEnd);
-    listenMove(false);
-    clearTimer();
-    if (startSwipeRef.current) {
-      events.onTouchEnd?.(touchEventRef.current!);
-      startSwipeRef.current = undefined;
-    }
-  });
-
-  const clearTimer = () => {
-    const timer = timeoutRef.current;
-    if (!timer) {
-      return;
-    }
-    clearTimeout(timer);
-    timeoutRef.current = undefined;
-  };
-
-  const handleStartEvents = (e: Event) => {
-    switch (eventType) {
-      case EventType.Press:
-        handlePress(e);
-        break;
-    }
-  };
-
   const handleEndEvents = (e: Event) => {
     switch (eventType) {
       case EventType.DoubleClick:
@@ -222,46 +188,6 @@ export const useEvent = (
       default:
         resetTouchRef();
         break;
-    }
-  };
-
-  const detectMove = (e: Event) => {
-    const touchEvent = getTouchEvent(e);
-    if (
-      Math.abs(touchEvent?.moveX || 0) > 1 ||
-      Math.abs(touchEvent?.moveY || 0) > 1
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  const handleTouchMove = useFn((e: Event) => {
-    isTouchMoveRef.current = detectMove(e);
-    switch (eventType) {
-      case EventType.HorizontalSwipe:
-      case EventType.VerticalSwipe:
-        handleSwipe(e);
-        break;
-    }
-  });
-
-  const handleMouseover = useFn((e: Event) => {
-    events?.onMouseover?.(e);
-  });
-
-  const handleMouseout = useFn((e: Event) => {
-    events?.onMouseout?.(e);
-  });
-
-  const listenMove = (listen: boolean) => {
-    if (listen && !isTouchMoveRef.current) {
-      addListener("mousemove", handleTouchMove);
-      addListener("touchmove", handleTouchMove);
-    } else if (!listen) {
-      isTouchMoveRef.current = false;
-      removeListener("mousemove", handleTouchMove);
-      removeListener("touchmove", handleTouchMove);
     }
   };
 
@@ -288,6 +214,80 @@ export const useEvent = (
       handle as EventListener,
     );
   };
+
+  const detectMove = (e: Event) => {
+    const touchEvent = getTouchEvent(e);
+    if (
+      Math.abs(touchEvent?.moveX || 0) > 1 ||
+      Math.abs(touchEvent?.moveY || 0) > 1
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleTouchMove = useFn((e: Event) => {
+    isTouchMoveRef.current = detectMove(e);
+    switch (eventType) {
+      case EventType.HorizontalSwipe:
+      case EventType.VerticalSwipe:
+        handleSwipe(e);
+        break;
+    }
+  });
+
+  const listenMove = (listen: boolean) => {
+    if (listen && !isTouchMoveRef.current) {
+      addListener("mousemove", handleTouchMove);
+      addListener("touchmove", handleTouchMove);
+    } else if (!listen) {
+      isTouchMoveRef.current = false;
+      removeListener("mousemove", handleTouchMove);
+      removeListener("touchmove", handleTouchMove);
+    }
+  };
+
+  const handleTouchEnd = useFn((e: Event) => {
+    handleEndEvents(e);
+    removeListener("mouseup", handleTouchEnd);
+    removeListener("touchend", handleTouchEnd);
+    listenMove(false);
+    clearTimer();
+    if (startSwipeRef.current) {
+      events.onTouchEnd?.(touchEventRef.current!);
+      startSwipeRef.current = undefined;
+    }
+  });
+
+  const handleStartEvents = (e: Event) => {
+    switch (eventType) {
+      case EventType.Press:
+        handlePress(e);
+        break;
+    }
+  };
+
+  const handleTouchStart = useFn((e: Event) => {
+    addListener("mouseup", handleTouchEnd);
+    addListener("touchend", handleTouchEnd);
+    const touches = touchRef.current;
+    if (touches.length > 2) {
+      touchRef.current.length = 0;
+    }
+    touches.push(getCurrentTime());
+    startPositionRef.current = touchEventRef.current = getTouchEvent(e);
+
+    listenMove(true);
+    handleStartEvents(e);
+  });
+
+  const handleMouseover = useFn((e: Event) => {
+    events?.onMouseover?.(e);
+  });
+
+  const handleMouseout = useFn((e: Event) => {
+    events?.onMouseout?.(e);
+  });
 
   const addListeners = () => {
     if (!elRef?.current || eventType === EventType.None) {
