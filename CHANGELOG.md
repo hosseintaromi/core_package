@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2-alpha.9](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.8...v0.1.2-alpha.9) (2024-02-24)
+
+
+### Features
+
+* :sparkles: add onOpen for view ([48454c6](https://gitlab.com/aseman/web/packages-core/commit/48454c687022374a0bf3d40e114a02dc29baec27))
+* :sparkles: add useClickAsync hook ([6d7fac9](https://gitlab.com/aseman/web/packages-core/commit/6d7fac9d6fddfe0e335ffe199e58d8a22402d662))
+* :sparkles: add useContextEvents hook ([51fba4a](https://gitlab.com/aseman/web/packages-core/commit/51fba4af83d8a93d66e5ea34e24c8090c6c6976b))
+* :sparkles: add useEventObserver hook ([5275c38](https://gitlab.com/aseman/web/packages-core/commit/5275c381a7dbd383be3b1ae4f9cd0829b9506ed5))
+* :sparkles: add useObserver hook ([3eeb967](https://gitlab.com/aseman/web/packages-core/commit/3eeb96776fc3763ce050989b35344f42ed5e083c))
+* :sparkles: add useObserverProp hook ([186eeca](https://gitlab.com/aseman/web/packages-core/commit/186eeca818f0355392d38706e2ea3ceb97f87c53))
+* :sparkles: add useTimeout hook ([96a3f97](https://gitlab.com/aseman/web/packages-core/commit/96a3f97376314099f60f5997917ae1085ac193f5))
+* :sparkles: complete utils exports ([396fe00](https://gitlab.com/aseman/web/packages-core/commit/396fe007c2dfe4599d3b4ad2d77036a8d2feb141))
+* :sparkles: don't close the last master page ([67b8c97](https://gitlab.com/aseman/web/packages-core/commit/67b8c97eccce5f5f79f823e0c269e2b1fa886ba3))
+* :sparkles: export all hooks ([b1bdb4d](https://gitlab.com/aseman/web/packages-core/commit/b1bdb4d1d0c52f0061f6920270d91e7f2eb992f4))
+* :sparkles: export useClickAsync hook ([151d045](https://gitlab.com/aseman/web/packages-core/commit/151d045ecfca1e6c2e996f41fd58a39648fff4e0))
+
+
+### Bug Fixes
+
+* :bug: fix eslint errors and warnings ([71778d1](https://gitlab.com/aseman/web/packages-core/commit/71778d1120f7b28060719e716b36124478c31f88))
+* :bug: fix overlay toggle without e, add overlay id, set isOpenRef in onClosed ([b0e10f9](https://gitlab.com/aseman/web/packages-core/commit/b0e10f95eb10a30172df6d7e2c510bb53b8e5f60))
+* fix imports that dont need to be exported as package options ([4e534d5](https://gitlab.com/aseman/web/packages-core/commit/4e534d50dd5f6608e8f799e254fc64247861f908))
+
 ## [0.1.2-alpha.8](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2-alpha.6...v0.1.2-alpha.8) (2024-02-21)
 
 
