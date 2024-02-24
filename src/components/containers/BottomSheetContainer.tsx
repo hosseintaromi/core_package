@@ -29,7 +29,7 @@ export const BottomSheetContainer = () => {
         }
         backDropRefHook.current.style.zIndex = `${length}`;
       },
-      animate(t, newView, prevView) {
+      animate(t, newView) {
         const p = slideIn(t);
         const newViewStyle = newView.ref.style;
         if (viewsInfo.length === 1) {
@@ -38,7 +38,7 @@ export const BottomSheetContainer = () => {
         newViewStyle.opacity = `${p}`;
         newViewStyle.transform = `translateY(${100 - p * 100}%)`;
       },
-      end(newView, prevView) {},
+      end() {},
     } as ViewEvent,
     {
       duration: 300,
@@ -66,7 +66,7 @@ export const BottomSheetContainer = () => {
           activeViewStyle.opacity = `${p}`;
         }
       },
-      end(closeViewEl, activeViewEl) {
+      end(closeViewEl) {
         const closedViewStyle = closeViewEl.ref.style;
         closedViewStyle.display = "none";
         backDropRefHook.current.style.zIndex = viewsInfo.length.toString();

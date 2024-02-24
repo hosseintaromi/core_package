@@ -3,6 +3,7 @@ const requestAnimFrame = (win.$requestAnimationFrame = (() =>
   win.requestAnimationFrame ||
   win.webkitRequestAnimationFrame ||
   win.mozRequestAnimationFrame ||
+  // eslint-disable-next-line func-names
   function (callback: any) {
     win.setTimeout(callback, 1000 / 60);
   })());

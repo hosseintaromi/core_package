@@ -59,13 +59,13 @@ function doBack() {
   }
 }
 
-function onPopState(e: any) {
+function onPopState() {
   if (browserAction) {
-    handleBrowserAction(e.state);
+    handleBrowserAction();
   }
 }
 
-function handleBrowserAction(state: any) {
+function handleBrowserAction() {
   if (historyStack.length > 0) {
     doBack();
   }

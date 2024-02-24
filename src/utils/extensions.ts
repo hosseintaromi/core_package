@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 declare global {
   interface Event {
     contains(container: Node): boolean;

@@ -11,6 +11,27 @@ export interface ViewContainerConfig {
   disableFirstTimeAnimate?: boolean;
 }
 
+export interface ViewConfig {
+  disableBackdrop?: boolean;
+  disableAnimate?: boolean;
+  inBackground?: boolean;
+  params?: any;
+  onClickedBackdrop?: () => void;
+}
+
+export interface ViewType<T> {
+  type: string;
+  id: string;
+  data?: T;
+  className?: string;
+  component: (props?: any) => JSX.Element;
+  onClose?: (res?: any) => void;
+  onClosed?: (res?: any) => void;
+  onOpen?: () => void;
+  onOpened?: () => void;
+  options?: ViewConfig;
+}
+
 export interface ViewEventArg {
   fromView?: ViewType<any>;
   toView?: ViewType<any>;
@@ -55,27 +76,6 @@ export interface ViewContextType {
   openView?: <T = any>(view: Omit<ViewType<T>, "type">) => void;
 }
 
-export interface ViewConfig {
-  disableBackdrop?: boolean;
-  disableAnimate?: boolean;
-  inBackground?: boolean;
-  params?: any;
-  onClickedBackdrop?: () => void;
-}
-
-export interface ViewType<T> {
-  type: string;
-  id: string;
-  data?: T;
-  className?: string;
-  component: (props?: any) => JSX.Element;
-  onClose?: (res?: any) => void;
-  onClosed?: (res?: any) => void;
-  onOpen?: () => void;
-  onOpened?: () => void;
-  options?: ViewConfig;
-}
-
 export interface ViewInfo {
   id: string;
   view: ViewType<any>;
@@ -90,6 +90,11 @@ export interface ViewEventConfigBase {
 
 export interface ViewEventConfigClose extends ViewEventConfigBase {
   closeType?: CloseType;
+}
+
+export interface ViewRef {
+  view: ViewType<any>;
+  ref: HTMLElement;
 }
 
 export interface ViewEvent<T = ViewEventConfigBase> {
@@ -107,9 +112,4 @@ export interface ViewEvent<T = ViewEventConfigBase> {
 export interface HistoryItem {
   id: string;
   back: () => void;
-}
-
-export interface ViewRef {
-  view: ViewType<any>;
-  ref: HTMLElement;
 }
