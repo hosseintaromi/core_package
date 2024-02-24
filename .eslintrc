@@ -45,6 +45,7 @@
     "no-restricted-exports": "off",
     "no-restricted-imports": ["error"],
     "no-lonely-if": "off",
+    "no-underscore-dangle": "off",
     "prefer-const": "off",
     "no-plusplus": "off",
     "no-multi-assign": "off",
