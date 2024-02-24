@@ -101,6 +101,7 @@ export async function openView<T = any>(
       moveViewToTop(foundView);
     } else {
       container.views.push(view as ViewType<T>);
+      view.onOpen?.();
       await container.openView(view as ViewType<T>);
       view.onOpened?.();
       addToLoadedViewStack(view as ViewType<T>);
