@@ -1,7 +1,10 @@
 import React from "react";
 import { ViewContainerType } from "types";
 import { useViewManage } from "hooks";
-import { onCloseToastConfig, onOpenToastConfig } from "utils";
+import {
+  onCloseToastConfig,
+  onOpenToastConfig,
+} from "src/utils/viewAnimations";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { ViewComponent } from "../_index";
 

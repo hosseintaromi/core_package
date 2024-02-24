@@ -5,7 +5,7 @@ import {
   closeTabAnimationConfig,
   onLeaveContainerConfig,
   openTabContainerConfig,
-} from "utils";
+} from "src/utils/viewAnimations";
 import { ViewComponent } from "../_index";
 
 export const PartialTabContainer = ({

@@ -29,7 +29,7 @@ export function registerContainer(
   ) => Promise<any>,
 ) {
   if (viewContainers[containerName]) {
-    console.warn("ViewModule", "Duplicate container type");
+    // console.warn("ViewModule", "Duplicate container type");
     return;
   }
 

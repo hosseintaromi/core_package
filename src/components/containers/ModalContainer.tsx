@@ -29,7 +29,7 @@ export const ModalContainer = () => {
         }
         backDropRef.current.style.zIndex = `${length}`;
       },
-      animate(t, newView, prevView) {
+      animate(t, newView) {
         const p = slideIn(t);
         const newViewStyle = newView.ref.style;
         if (viewsInfo.length === 1) {
@@ -38,7 +38,7 @@ export const ModalContainer = () => {
         newViewStyle.opacity = `${p}`;
         newViewStyle.transform = `translateY(${20 - p * 20}%)`;
       },
-      end(newView, prevView) {},
+      end() {},
     } as ViewEvent,
     {
       duration: 300,
@@ -66,7 +66,7 @@ export const ModalContainer = () => {
           activeViewStyle.opacity = `${p}`;
         }
       },
-      end(closeViewEl, activeViewEl) {
+      end(closeViewEl) {
         const closedViewStyle = closeViewEl.ref.style;
         closedViewStyle.display = "none";
         backDropRef.current.style.zIndex = viewsInfo.length.toString();

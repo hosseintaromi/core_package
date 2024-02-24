@@ -42,7 +42,7 @@ export async function openCustomConfirm<T>(
   component: (props?: any) => JSX.Element,
   data: T,
 ) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     openView<T>({
       type: ViewContainerType.Modal,
       id: `confirm-${Date.now()}`,

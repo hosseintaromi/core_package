@@ -62,24 +62,32 @@ export const SlideContainer = <T, U>({
 
   const { requestAnimate, cancelAnimate } = useAnimate();
 
-  useEvent(containerRef, EventType.HorizontalSwipe, {
-    onTouchStart: (e: TouchEvent) => {
-      touchTimeRef.current = Date.now();
-      const animateRequest = animateRequestRef.current;
-      if (animateRequest) {
-        cancelAnimate(animateRequest);
-        animateRequestRef.current = undefined;
-      }
-      sweep(e);
-    },
-    onTouchMove: (e: TouchEvent) => {
-      sweep(e);
-    },
-    onTouchEnd: (e: TouchEvent) => {
-      sweep(e);
-      animate(e.moveX);
-    },
-  });
+  const getContainerWidth = () => containerRef.current.clientWidth;
+
+  const getNewXMove = (index: number, moveX: number) => {
+    const containerWidth = getContainerWidth();
+    let totalXMove = startMoveXRef.current + moveX;
+    if (totalXMove >= 0) {
+      const maxMoveX = index * containerWidth;
+      totalXMove = Math.min(maxMoveX, totalXMove);
+    } else {
+      const minMove = (index - lastViewIndex) * containerWidth;
+      totalXMove = Math.max(minMove, totalXMove);
+    }
+    const moveViewCount =
+      (totalXMove <= 0 ? 1 : -1) *
+      Math.ceil(Math.abs(totalXMove / containerWidth));
+    const newXMove = totalXMove % containerWidth;
+    let to = index + moveViewCount;
+    const percent = (Math.abs(newXMove) / containerWidth) * 100;
+    return {
+      from: totalXMove < 0 ? to - 1 : to + 1,
+      to,
+      percent,
+      moveX: newXMove,
+      totalXMove,
+    } as MoveInfo;
+  };
 
   const { viewsInfo } = useViewManage(containerType, 6, {
     moveBetweenViews: true,
@@ -126,8 +134,7 @@ export const SlideContainer = <T, U>({
     });
   };
 
-  const getContainerWidth = () => containerRef.current.clientWidth;
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const setPointer = (index: number, percent: number, left: boolean) => {
     // const el = components[index].ref!;
     // const elStyle = el.style;
@@ -227,30 +234,24 @@ export const SlideContainer = <T, U>({
     );
   };
 
-  const getNewXMove = (index: number, moveX: number) => {
-    const containerWidth = getContainerWidth();
-    let totalXMove = startMoveXRef.current + moveX;
-    if (totalXMove >= 0) {
-      const maxMoveX = index * containerWidth;
-      totalXMove = Math.min(maxMoveX, totalXMove);
-    } else {
-      const minMove = (index - lastViewIndex) * containerWidth;
-      totalXMove = Math.max(minMove, totalXMove);
-    }
-    const moveViewCount =
-      (totalXMove <= 0 ? 1 : -1) *
-      Math.ceil(Math.abs(totalXMove / containerWidth));
-    const newXMove = totalXMove % containerWidth;
-    let to = index + moveViewCount;
-    const percent = (Math.abs(newXMove) / containerWidth) * 100;
-    return {
-      from: totalXMove < 0 ? to - 1 : to + 1,
-      to,
-      percent,
-      moveX: newXMove,
-      totalXMove,
-    } as MoveInfo;
-  };
+  useEvent(containerRef, EventType.HorizontalSwipe, {
+    onTouchStart: (e: TouchEvent) => {
+      touchTimeRef.current = Date.now();
+      const animateRequest = animateRequestRef.current;
+      if (animateRequest) {
+        cancelAnimate(animateRequest);
+        animateRequestRef.current = undefined;
+      }
+      sweep(e);
+    },
+    onTouchMove: (e: TouchEvent) => {
+      sweep(e);
+    },
+    onTouchEnd: (e: TouchEvent) => {
+      sweep(e);
+      animate(e.moveX);
+    },
+  });
 
   useInit(() => {
     hideViews(components.map((x) => x.ref));

@@ -15,7 +15,7 @@ export const useClickAsync = <T>(
     if (!element) {
       return;
     }
-    element.addEventListener("click", async (e: any) => {
+    element.addEventListener("click", async () => {
       try {
         if (loadingRef.current) {
           return;

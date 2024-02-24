@@ -73,7 +73,7 @@ export const OverlaySlideContainer = <T, U>({
           newElStyle.opacity = `${p}`;
         }
       },
-      end(newView, prevView) {},
+      end() {},
     } as ViewEvent,
     {
       duration: 300,
@@ -97,7 +97,7 @@ export const OverlaySlideContainer = <T, U>({
           setContainerOpacity(1 - p);
         }
       },
-      end(closeViewEl, activeViewEl) {},
+      end() {},
     } as ViewEvent<ViewEventConfigClose>,
   );
 

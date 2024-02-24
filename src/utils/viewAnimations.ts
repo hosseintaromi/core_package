@@ -39,7 +39,7 @@ export const closeTabAnimationConfig: ViewEvent = {
 
 export const openTabAnimationConfig: ViewEvent = {
   duration: 300,
-  start(newView, prevView) {
+  start(newView) {
     const newViewStyle = newView.ref.style;
     newViewStyle.display = "block";
     newViewStyle.opacity = "0";
@@ -71,14 +71,14 @@ export const onEnterContainerConfig: ViewEvent = {
 
 export const onLeaveContainerConfig: ViewEvent = {
   duration: 500,
-  start(closeView, activeView) {},
-  animate(t, closeView, activeView) {},
-  end(closeView, activeView) {},
+  start() {},
+  animate() {},
+  end() {},
 };
 
 export const activateTabConfig: ViewEvent = {
   duration: 200,
-  start(newView, prevView) {
+  start(newView) {
     const newStyle = newView.ref.style;
     newStyle.display = "block";
     newStyle.opacity = "0";
@@ -133,14 +133,14 @@ export const openTabContainerConfig: ViewEvent = {
 
 export const onEnterTabContainerConfig: ViewEvent = {
   duration: 400,
-  start(newView, prevView) {},
-  animate(t, newView, prevView) {},
-  end(newView, prevView) {},
+  start() {},
+  animate() {},
+  end() {},
 };
 
 export const openPartialTabAnimationConfig: ViewEvent = {
   duration: 300,
-  start(newView, prevView) {
+  start(newView) {
     const newStyle = newView.ref.style;
     newStyle.display = "block";
     newStyle.opacity = "0";
@@ -158,7 +158,7 @@ export const openPartialTabAnimationConfig: ViewEvent = {
 
 export const activePartialTabAnimationConfig: ViewEvent = {
   duration: 300,
-  start(newView, prevView) {
+  start(newView) {
     const newStyle = newView.ref.style;
     newStyle.display = "block";
     newStyle.opacity = "0";
@@ -176,7 +176,7 @@ export const activePartialTabAnimationConfig: ViewEvent = {
 
 export const leaveContainerMasterTabAnimationConfig: ViewEvent = {
   duration: 300,
-  start(newView, prevView) {
+  start(newView) {
     const newStyle = newView.ref.style;
 
     newStyle.display = "block";
@@ -195,13 +195,13 @@ export const leaveContainerMasterTabAnimationConfig: ViewEvent = {
 
 export const onOpenToastConfig: ViewEvent = {
   duration: 300,
-  start(newView, prevView) {
+  start(newView) {
     const newViewStyle = newView.ref.style;
     newViewStyle.position = "relative";
     newViewStyle.zIndex = "1";
     newViewStyle.opacity = "0";
   },
-  animate(t, newView, prevView) {
+  animate(t, newView) {
     const newViewStyle = newView.ref.style;
     newViewStyle.opacity = `${t}`;
   },
@@ -209,16 +209,16 @@ export const onOpenToastConfig: ViewEvent = {
 
 export const onCloseToastConfig: ViewEvent = {
   duration: 300,
-  start(closeView, activeView) {
+  start(closeView) {
     const closedViewStyle = closeView.ref.style;
     closedViewStyle.zIndex = "0";
   },
-  animate(t, closeView, activeView) {
+  animate(t, closeView) {
     const p = slideIn(t);
     const closedViewStyle = closeView.ref.style;
     closedViewStyle.opacity = `${1 - t}`;
     const offsetHeight = closeView.ref.offsetHeight;
     closedViewStyle.marginTop = `${-offsetHeight * p}px`;
   },
-  end(closeView, activeView) {},
+  end() {},
 };

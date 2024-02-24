@@ -1,12 +1,12 @@
 import { useView } from "hooks";
 
-export interface MenuOptions {
-  options: Option[];
-}
-
 export interface Option {
   label: string;
   value: string;
+}
+
+export interface MenuOptions {
+  options: Option[];
 }
 
 export function Menu() {

@@ -44,26 +44,13 @@ export const useOverlay = <T, U>(overlayData: OverlayData<T, U>) => {
           } else {
             isOpenRef.current = true;
             if (e) {
+              // eslint-disable-next-line no-use-before-define
               openMenu(e);
             }
           }
         },
       },
     };
-
-  useEvent(
-    overlayData.event ? (elRef as MutableRefObject<any>) : undefined,
-    overlayData.event || EventType.Tap,
-    {
-      onPress: (e: Event) => openMenu(e),
-      onTap: (e: Event) => openMenu(e),
-      onDoubleClick: (e: Event) => openMenu(e),
-      onRightClick: (e: Event) => openMenu(e),
-      onMouseover: (e: Event) => {
-        openMenu(e);
-      },
-    },
-  );
 
   const openMenu = (event: Event | TouchEvent) => {
     openView<T>({
@@ -92,6 +79,20 @@ export const useOverlay = <T, U>(overlayData: OverlayData<T, U>) => {
       },
     });
   };
+
+  useEvent(
+    overlayData.event ? (elRef as MutableRefObject<any>) : undefined,
+    overlayData.event || EventType.Tap,
+    {
+      onPress: (e: Event) => openMenu(e),
+      onTap: (e: Event) => openMenu(e),
+      onDoubleClick: (e: Event) => openMenu(e),
+      onRightClick: (e: Event) => openMenu(e),
+      onMouseover: (e: Event) => {
+        openMenu(e);
+      },
+    },
+  );
 
   return elRef as MutableRefObject<any>;
 };
