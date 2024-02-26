@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.4](https://gitlab.com/aseman/web/packages-core/compare/v0.1.3...v0.1.4) (2024-02-26)
+
+
+### Bug Fixes
+
+* :bug: change animation opacity and display ([fd1ec60](https://gitlab.com/aseman/web/packages-core/commit/fd1ec6096f440a84ef0b4cff5a330b6f5000eca5))
+
 ## [0.1.3](https://gitlab.com/aseman/web/packages-core/compare/v0.1.2...v0.1.3) (2024-02-26)
 
 
