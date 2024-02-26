@@ -150,7 +150,7 @@ export const openTabContainerConfig: ViewEvent = {
   end(newView, prevView) {
     const prevStyle = prevView?.ref?.style;
     if (prevStyle) {
-      prevStyle.display = "block";
+      prevStyle.display = "none";
     }
   },
 };
