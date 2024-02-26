@@ -101,5 +101,4 @@ export const ViewContextProvider = memo(
       </ViewContext.Provider>
     );
   },
-  () => true,
 );
