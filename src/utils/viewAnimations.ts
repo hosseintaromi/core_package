@@ -100,6 +100,29 @@ export const activateTabConfig: ViewEvent = {
   },
 };
 
+export const activateTabConfig2: ViewEvent = {
+  duration: 200,
+  start(newView, prevView) {
+    const newStyle = newView.ref.style;
+    newStyle.display = "block";
+    newStyle.opacity = "0";
+  },
+  animate(t, newView, prevView) {
+    const newStyle = newView.ref.style;
+    const prevStyle = prevView?.ref.style;
+    newStyle.opacity = `${t}`;
+    if (prevStyle) {
+      prevStyle.opacity = `${1 - t}`;
+    }
+  },
+  end(newView, prevView) {
+    const prevViewStyle = prevView?.ref.style;
+    if (prevViewStyle) {
+      prevViewStyle.display = "none";
+    }
+  },
+};
+
 export const openTabContainerConfig: ViewEvent = {
   duration: 400,
   start(newView, prevView) {
