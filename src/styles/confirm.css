@@ -1,0 +1,51 @@
+.modal-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+}
+.modal-message {
+  color: #777;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+.modal-btn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+.modal-btn .btn + .btn {
+  margin-right: 0.75rem;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  border-radius: 0.25rem;
+  user-select: none;
+  font-family: inherit;
+}
+.btn-success {
+  color: #fff;
+  background-color: #36c6d3;
+}
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #27a4b0;
+}
+.btn-error {
+  background-color: #ed6b75;
+  color: #fff;
+}
+.btn-error:hover,
+.btn-error:focus {
+  background-color: #e73d4a;
+}
