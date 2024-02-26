@@ -1,0 +1,17 @@
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  border-radius: 0.25rem;
+  user-select: none;
+  font-family: inherit;
+}
