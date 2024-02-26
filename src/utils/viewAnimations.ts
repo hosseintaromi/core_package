@@ -1,4 +1,4 @@
-import type { ViewEvent } from "types";
+import { ViewEvent } from "types";
 import { bezier } from "./bezier";
 
 const slideIn = bezier(0.25, 1, 0.5, 1);
@@ -81,7 +81,7 @@ export const activateTabConfig: ViewEvent = {
   start(newView) {
     const newStyle = newView.ref.style;
     newStyle.display = "block";
-    newStyle.opacity = "0";
+    // newStyle.opacity = "0";
   },
   animate(t, newView, prevView) {
     const newStyle = newView.ref.style;
@@ -94,7 +94,8 @@ export const activateTabConfig: ViewEvent = {
   end(newView, prevView) {
     const prevViewStyle = prevView?.ref.style;
     if (prevViewStyle) {
-      prevViewStyle.display = "none";
+      prevViewStyle.opacity = "1";
+      // prevViewStyle.display = "none";
     }
   },
 };
