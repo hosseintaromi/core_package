@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
 import { bezier } from "utils";
@@ -123,11 +123,11 @@ export const DesktopLeftContainer = () => {
   ) : (
     <div ref={containerRef} className="master-profile-container">
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <ViewComponent viewInfo={viewInfo} />
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

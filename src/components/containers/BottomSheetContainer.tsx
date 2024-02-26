@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
 import { bezier, closeView } from "utils";
@@ -114,13 +114,13 @@ export const BottomSheetContainer = () => {
         className={viewsInfo.length === 0 ? "" : "sheet-backdrop"}
       />
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <Scrollable viewInfo={viewInfo}>
               <ViewComponent viewInfo={viewInfo} />
             </Scrollable>
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

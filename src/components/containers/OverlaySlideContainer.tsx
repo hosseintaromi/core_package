@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useRef } from "react";
+import { Fragment, MutableRefObject, useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { EventType, useEvent, useFn, useViewManage } from "hooks";
 import { bezier, closeView, openView } from "utils";
@@ -175,11 +175,11 @@ export const OverlaySlideContainer = <T, U>({
       className={viewsInfo.length === 0 ? "hidden" : "overlay-inline-container"}
     >
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <ViewComponent viewInfo={viewInfo} />
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );
