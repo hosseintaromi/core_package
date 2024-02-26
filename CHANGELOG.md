@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.5-alpha.6](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.5...v0.1.5-alpha.6) (2024-02-26)
+
+
+### Bug Fixes
+
+* returning the memo for bug test ([5ac8689](https://gitlab.com/aseman/web/packages-core/commit/5ac868903f59c9c6e28aedb2f6e5dff666854149))
+
 ## [0.1.5-alpha.5](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.4...v0.1.5-alpha.5) (2024-02-26)
 
 
