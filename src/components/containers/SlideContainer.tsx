@@ -111,7 +111,7 @@ export const SlideContainer = <T, U>({
     const ref = viewInfo?.elRef;
     ref!.style.display = "block";
     if (index > 0) {
-      ref!.style.transform = `translateX(100%)`;
+      ref!.style.transform = `translate3d(100%, 0, 0)`;
     }
   });
 
@@ -170,13 +170,13 @@ export const SlideContainer = <T, U>({
 
     if (from && ((animate && percent !== 100) || (!animate && percent !== 0))) {
       const style = from.style;
-      style.transform = `translateX(${direction * percent}%)`;
+      style.transform = `translate3d(${direction * percent}%, 0, 0)`;
       style.display = "block";
       setPointer(fromIndex, -percent, fromIndex > toIndex);
     }
     if (to && ((animate && percent !== 0) || (!animate && percent !== 100))) {
       const style = to.style;
-      style.transform = `translateX(${direction * (percent - 100)}%)`;
+      style.transform = `translate3d(${direction * (percent - 100)}%, 0, 0)`;
       style.display = "block";
       setPointer(toIndex, percent - 100, fromIndex < toIndex);
     }
