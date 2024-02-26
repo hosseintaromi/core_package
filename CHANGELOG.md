@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.5-alpha.4](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.3...v0.1.5-alpha.4) (2024-02-26)
+
+
+### Bug Fixes
+
+* remove general import of react ([2c3b7de](https://gitlab.com/aseman/web/packages-core/commit/2c3b7debb848c604e29d92e711e32b9dd35de68b))
+* remove memo from context ([dee424e](https://gitlab.com/aseman/web/packages-core/commit/dee424eee9ee227e4fc2ba9ca27f2883367d009e))
+
 ## [0.1.5-alpha.3](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.2...v0.1.5-alpha.3) (2024-02-26)
 
 ## [0.1.5-alpha.2](https://gitlab.com/aseman/web/packages-core/compare/v0.1.4...v0.1.5-alpha.2) (2024-02-26)
