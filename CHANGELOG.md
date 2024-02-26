@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## 0.1.5 (2024-02-26)
+
+
+### Features
+
+* :tada: initialize project ([ad9dca9](https://gitlab.com/aseman/web/packages-core/commit/ad9dca92adb097f6545d8158cd622d8738b2d35e))
+
 ## [0.1.4](https://gitlab.com/aseman/web/packages-core/compare/v0.1.3...v0.1.4) (2024-02-26)
 
 
