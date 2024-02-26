@@ -5,4 +5,5 @@ export * from "./historyManager";
 export * from "./viewManager";
 export * from "./commonViews";
 export * from "./extensions";
+export * from "./ErrorBoundary";
 export * from "./windowEnvironment";
