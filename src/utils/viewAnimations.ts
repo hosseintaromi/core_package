@@ -100,9 +100,9 @@ export const activateTabConfig: ViewEvent = {
   },
 };
 
-export const activateTabConfig2: ViewEvent = {
+export const bottomSheetContainerConfig: ViewEvent = {
   duration: 200,
-  start(newView, prevView) {
+  start(newView) {
     const newStyle = newView.ref.style;
     newStyle.display = "block";
     newStyle.opacity = "0";
