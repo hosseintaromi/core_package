@@ -7,3 +7,4 @@ export * from "./commonViews";
 export * from "./extensions";
 export * from "./ErrorBoundary";
 export * from "./windowEnvironment";
+export * from "./observable";
