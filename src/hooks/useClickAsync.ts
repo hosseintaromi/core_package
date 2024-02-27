@@ -2,7 +2,7 @@ import { MutableRefObject, useRef } from "react";
 import { useInit } from "./useInit";
 
 export const useClickAsync = <T>(
-  asyncRequest: (callback?: VoidFunction) => Promise<T> | void,
+  asyncRequest: (callback: VoidFunction) => Promise<T> | void,
   success?: (res: T) => void,
   failed?: (exp: string) => void,
 ) => {

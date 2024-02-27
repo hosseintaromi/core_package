@@ -1,20 +1,21 @@
 import { useClickAsync } from "hooks";
 
 const ClickAsyncComponent = () => {
-  const request = (callback?: VoidFunction) => {
+  const clickAsync = useClickAsync((callback) => {
     setTimeout(() => {
-      callback?.();
+      callback();
     }, 3000);
-  };
+  });
 
-  const request2 = () =>
-    new Promise((res) => {
-      setTimeout(() => {
-        res(true);
-      }, 3000);
-    });
-  const clickAsync = useClickAsync(request);
-  const clickAsync2 = useClickAsync(request2);
+  const clickAsync2 = useClickAsync(
+    () =>
+      new Promise((res) => {
+        setTimeout(() => {
+          res(true);
+        }, 3000);
+      }),
+  );
+
   return (
     <>
       <button ref={clickAsync}>Click Async</button>
