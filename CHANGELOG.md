@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.8](https://gitlab.com/aseman/web/packages-core/compare/v0.1.7...v0.1.8) (2024-02-27)
+
+
+### Features
+
+* export observer from utils ([51b57fc](https://gitlab.com/aseman/web/packages-core/commit/51b57fc8bd821ed61b6012a8ae729260fede62d2))
+
 ## [0.1.7](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.12...v0.1.7) (2024-02-27)
 
 
