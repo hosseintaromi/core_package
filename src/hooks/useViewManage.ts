@@ -70,7 +70,7 @@ export const useViewManage = (
   const openView = useFn(
     (newView: ViewType<any>) =>
       new Promise((resolve) => {
-        const newPgeInfo: ViewInfo = {
+        const newViewInfo: ViewInfo = {
           id: newView.id,
           view: newView,
           onInit: async (el: HTMLElement) => {
@@ -92,7 +92,7 @@ export const useViewManage = (
             await handleViewEvent(
               {
                 view: newView,
-                ref: newPgeInfo.elRef as any,
+                ref: newViewInfo.elRef as any,
               },
               currentViewInfo
                 ? {
@@ -108,14 +108,15 @@ export const useViewManage = (
                 toView: newView,
               });
             }
-            newPgeInfo.events?.onEnter?.({
+            newViewInfo.events?.onEnter?.({
               fromView: currentViewInfo?.view,
               data: newView.data,
             });
             resolve(true);
           },
         };
-        viewsInfo.push(newPgeInfo);
+        viewsInfo.remove((view) => view.id === newViewInfo.id);
+        viewsInfo.push(newViewInfo);
         setViewsInfo([...viewsInfo]);
       }),
   );

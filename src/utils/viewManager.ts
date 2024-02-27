@@ -46,6 +46,7 @@ export function registerContainer(
 
 export function removeContainer(containerName: string) {
   if (viewContainers[containerName]) {
+    loadedViewsStack.removeAll((x) => x.type === containerName);
     delete viewContainers[containerName];
   }
 }
