@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef, createContext, memo } from "react";
-import { closeView, openView } from "utils";
+import { closeView, openView, removeContainer } from "utils";
 import {
   ViewEventType,
   ViewEvents,
@@ -83,6 +83,9 @@ export const ViewContextProvider = memo(
         onClosing: (e: ViewEventArg) => {
           emitEvent(ViewEventType.onClosing, e);
         },
+      };
+      return () => {
+        removeContainer(viewInfo.view.type);
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
