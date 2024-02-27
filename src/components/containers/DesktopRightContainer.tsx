@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
 import { bezier } from "utils";
@@ -89,11 +89,11 @@ export const DesktopRightContainer = () => {
   ) : (
     <div className="master-chats-container">
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <ViewComponent viewInfo={viewInfo} />
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

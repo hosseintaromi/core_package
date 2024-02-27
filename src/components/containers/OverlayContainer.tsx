@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useInit, useViewManage } from "hooks";
 import { setStyle, bezier, closeView } from "utils";
@@ -150,11 +150,11 @@ export const OverlayContainer = () => {
     <div className={viewsInfo.length === 0 ? "hidden" : "overlay-container"}>
       <div ref={backDropRef} onClick={closeModal} className="backdrop" />
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <ViewComponent viewInfo={viewInfo} />
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

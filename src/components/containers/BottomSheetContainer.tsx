@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
 import { bezier, closeView } from "utils";
 import { ViewContainerType, ViewEvent } from "types";
-import { activateTabConfig } from "src/utils/viewAnimations";
+import { bottomSheetContainerConfig } from "src/utils/viewAnimations";
 import { Scrollable, ViewComponent } from "../_index";
 
 export const BottomSheetContainer = () => {
@@ -72,7 +72,7 @@ export const BottomSheetContainer = () => {
         backDropRefHook.current.style.zIndex = viewsInfo.length.toString();
       },
     } as ViewEvent,
-    activateTabConfig,
+    bottomSheetContainerConfig,
     {
       duration: 300,
       animate(t, _closedView, newView) {
@@ -114,13 +114,13 @@ export const BottomSheetContainer = () => {
         className={viewsInfo.length === 0 ? "" : "sheet-backdrop"}
       />
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <Scrollable viewInfo={viewInfo}>
               <ViewComponent viewInfo={viewInfo} />
             </Scrollable>
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

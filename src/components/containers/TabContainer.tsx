@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
 import {
@@ -21,16 +21,16 @@ export const TabContainer = () => {
   return viewsInfo.length === 0 ? (
     <></>
   ) : (
-    <React.Fragment>
+    <Fragment>
       <div className="tab-container">
         {viewsInfo?.map((viewInfo) => (
-          <React.Fragment key={viewInfo.id}>
+          <Fragment key={viewInfo.id}>
             <ViewContextProvider viewInfo={viewInfo}>
               <ViewComponent viewInfo={viewInfo} />
             </ViewContextProvider>
-          </React.Fragment>
+          </Fragment>
         ))}
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 };
