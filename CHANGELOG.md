@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.9](https://gitlab.com/aseman/web/packages-core/compare/v0.1.8...v0.1.9) (2024-02-27)
+
+
+### Features
+
+* add localization ([1c620a4](https://gitlab.com/aseman/web/packages-core/commit/1c620a4df1bc096cd52acce82a7ae3782fb8ad93))
+* export localization context ([31ec3cd](https://gitlab.com/aseman/web/packages-core/commit/31ec3cd23dd22a708ef928ec3cb964d59c502a56))
+
 ## [0.1.8](https://gitlab.com/aseman/web/packages-core/compare/v0.1.7...v0.1.8) (2024-02-27)
 
 
