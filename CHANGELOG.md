@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.5-alpha.12](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.11...v0.1.5-alpha.12) (2024-02-27)
+
+
+### Bug Fixes
+
+* :bug: fix bug in strict mode for master tab container ([77e0876](https://gitlab.com/aseman/web/packages-core/commit/77e0876fd6c44328b31e07a3826295a473924d8d))
+
 ## [0.1.5-alpha.11](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.10...v0.1.5-alpha.11) (2024-02-27)
 
 
