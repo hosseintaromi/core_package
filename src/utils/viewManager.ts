@@ -100,7 +100,9 @@ export async function openView<T = any>(
       await container.activateView?.(foundView);
       moveViewToTop(foundView);
     } else {
-      container.views.push(view as ViewType<T>);
+      const viewList = container.views;
+      viewList.remove((x) => view.id === x.id);
+      viewList.push(view as ViewType<T>);
       view.onOpen?.();
       await container.openView(view as ViewType<T>);
       view.onOpened?.();
