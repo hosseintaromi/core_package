@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.5-alpha.11](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.10...v0.1.5-alpha.11) (2024-02-27)
+
+
+### Bug Fixes
+
+* :bug: fix bug of view in strict mode that closes the view ([d78234d](https://gitlab.com/aseman/web/packages-core/commit/d78234d069de5ebb8b9a2ae652172aaf55838658))
+
 ## [0.1.5-alpha.10](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.9...v0.1.5-alpha.10) (2024-02-27)
 
 
