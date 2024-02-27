@@ -46,6 +46,7 @@ export function registerContainer(
 
 export function removeContainer(containerName: string) {
   if (viewContainers[containerName]) {
+    loadedViewsStack.removeAll((x) => x.type === containerName);
     delete viewContainers[containerName];
   }
 }
@@ -100,9 +101,7 @@ export async function openView<T = any>(
       await container.activateView?.(foundView);
       moveViewToTop(foundView);
     } else {
-      const viewList = container.views;
-      viewList.remove((x) => view.id === x.id);
-      viewList.push(view as ViewType<T>);
+      container.views.push(view as ViewType<T>);
       view.onOpen?.();
       await container.openView(view as ViewType<T>);
       view.onOpened?.();
