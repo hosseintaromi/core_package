@@ -12,3 +12,4 @@ export * from "./useEventObserver";
 export * from "./useTimeout";
 export * from "./useObserverProp";
 export * from "./useObserver";
+export * from "./useLocale";
