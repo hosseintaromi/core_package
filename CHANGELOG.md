@@ -3,11 +3,120 @@
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
 ## 0.1.5 (2024-02-26)
+## [0.1.5-alpha.11](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.10...v0.1.5-alpha.11) (2024-02-27)
+
+
+### Bug Fixes
+
+* :bug: fix bug of view in strict mode that closes the view ([d78234d](https://gitlab.com/aseman/web/packages-core/commit/d78234d069de5ebb8b9a2ae652172aaf55838658))
+
+## [0.1.5-alpha.10](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.9...v0.1.5-alpha.10) (2024-02-27)
 
 
 ### Features
 
 * :tada: initialize project ([ad9dca9](https://gitlab.com/aseman/web/packages-core/commit/ad9dca92adb097f6545d8158cd622d8738b2d35e))
+* add memo to view context and check condtions for production ([1b2fbe0](https://gitlab.com/aseman/web/packages-core/commit/1b2fbe0d3f03cbda5c3e85db42651f3bfba76897))
+
+## [0.1.5-alpha.9](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.6...v0.1.5-alpha.9) (2024-02-27)
+
+
+### Bug Fixes
+
+*  remove memo return true for bug test ([4c97e97](https://gitlab.com/aseman/web/packages-core/commit/4c97e97a21cb4cdca9af0b496fd9f7a4c0503dc4))
+* removing the memo for bug test ([8b9e257](https://gitlab.com/aseman/web/packages-core/commit/8b9e257219b82b8c8b5346307b52c457fbe3fa1e))
+
+## [0.1.5-alpha.8](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.7...v0.1.5-alpha.8) (2024-02-26)
+
+
+### Bug Fixes
+
+* removing the memo for bug test ([ebd2afe](https://gitlab.com/aseman/web/packages-core/commit/ebd2afe06b90e45519ba6908bfd6af093596195d))
+
+## [0.1.5-alpha.7](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.6...v0.1.5-alpha.7) (2024-02-26)
+
+
+### Bug Fixes
+
+*  remove memo return true for bug test ([27f6ffb](https://gitlab.com/aseman/web/packages-core/commit/27f6ffb31973664ae446f0759f5ed49dafcb1561))
+
+## [0.1.5-alpha.6](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.5...v0.1.5-alpha.6) (2024-02-26)
+
+
+### Bug Fixes
+
+* returning the memo for bug test ([5ac8689](https://gitlab.com/aseman/web/packages-core/commit/5ac868903f59c9c6e28aedb2f6e5dff666854149))
+
+## [0.1.5-alpha.5](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.4...v0.1.5-alpha.5) (2024-02-26)
+
+
+### Bug Fixes
+
+* add memo to context ([808fc0c](https://gitlab.com/aseman/web/packages-core/commit/808fc0c97dd23940a50ca8d6ba84c8e522240e55))
+
+## [0.1.5-alpha.4](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.3...v0.1.5-alpha.4) (2024-02-26)
+
+
+### Bug Fixes
+
+* remove general import of react ([2c3b7de](https://gitlab.com/aseman/web/packages-core/commit/2c3b7debb848c604e29d92e711e32b9dd35de68b))
+* remove memo from context ([dee424e](https://gitlab.com/aseman/web/packages-core/commit/dee424eee9ee227e4fc2ba9ca27f2883367d009e))
+
+## [0.1.5-alpha.3](https://gitlab.com/aseman/web/packages-core/compare/v0.1.5-alpha.2...v0.1.5-alpha.3) (2024-02-26)
+
+## [0.1.5-alpha.2](https://gitlab.com/aseman/web/packages-core/compare/v0.1.4...v0.1.5-alpha.2) (2024-02-26)
+
+
+### Features
+
+* :memo: add error boundary ([7201b61](https://gitlab.com/aseman/web/packages-core/commit/7201b61cf739de87be0db4f885a6e3c368e1bfee))
+* :sparkles: add lazy component type in view type ([90af498](https://gitlab.com/aseman/web/packages-core/commit/90af498eb9803995c62640777e3c468515782aba))
+* :sparkles: add window environment ([4fd4139](https://gitlab.com/aseman/web/packages-core/commit/4fd4139fade3e0c6a24a61990614103bb2c6f3d4))
+* :sparkles: set translate3d instead of translateX in slide container ([364eaa7](https://gitlab.com/aseman/web/packages-core/commit/364eaa7d8e159f1a69cd98a5f5fa9d040beecc7e))
+
+
+### Bug Fixes
+
+* :bug: change the name of activeTabConfig to bottomSheetContainerConfig ([84e2904](https://gitlab.com/aseman/web/packages-core/commit/84e2904e9480538b00c537d11c2568e7d52ee5a2))
+* :bug: fix open tab container animation ([f7dad44](https://gitlab.com/aseman/web/packages-core/commit/f7dad4462a2f46afdca670896f82c82f5e5fb1ac))
+* :bug: fix tab container open animations ([a7dd621](https://gitlab.com/aseman/web/packages-core/commit/a7dd621cbc03c8595947c934144b6cc263daa524))
+* :bug: fix view animations ([29a0cb7](https://gitlab.com/aseman/web/packages-core/commit/29a0cb73657dc3ae620530fceb8d36db088d6ba8))
+
+## [0.1.5-alpha.1](https://gitlab.com/aseman/web/packages-core/compare/v0.1.4...v0.1.5-alpha.1) (2024-02-26)
+
+
+### Features
+
+* :memo: add error boundary ([7201b61](https://gitlab.com/aseman/web/packages-core/commit/7201b61cf739de87be0db4f885a6e3c368e1bfee))
+* :sparkles: add lazy component type in view type ([90af498](https://gitlab.com/aseman/web/packages-core/commit/90af498eb9803995c62640777e3c468515782aba))
+* :sparkles: add window environment ([4fd4139](https://gitlab.com/aseman/web/packages-core/commit/4fd4139fade3e0c6a24a61990614103bb2c6f3d4))
+* :sparkles: set translate3d instead of translateX in slide container ([364eaa7](https://gitlab.com/aseman/web/packages-core/commit/364eaa7d8e159f1a69cd98a5f5fa9d040beecc7e))
+
+
+### Bug Fixes
+
+* :bug: change the name of activeTabConfig to bottomSheetContainerConfig ([84e2904](https://gitlab.com/aseman/web/packages-core/commit/84e2904e9480538b00c537d11c2568e7d52ee5a2))
+* :bug: fix open tab container animation ([f7dad44](https://gitlab.com/aseman/web/packages-core/commit/f7dad4462a2f46afdca670896f82c82f5e5fb1ac))
+* :bug: fix tab container open animations ([a7dd621](https://gitlab.com/aseman/web/packages-core/commit/a7dd621cbc03c8595947c934144b6cc263daa524))
+* :bug: fix view animations ([29a0cb7](https://gitlab.com/aseman/web/packages-core/commit/29a0cb73657dc3ae620530fceb8d36db088d6ba8))
+
+## [0.1.5-alpha.0](https://gitlab.com/aseman/web/packages-core/compare/v0.1.4...v0.1.5-alpha.0) (2024-02-26)
+
+
+### Features
+
+* :memo: add error boundary ([7201b61](https://gitlab.com/aseman/web/packages-core/commit/7201b61cf739de87be0db4f885a6e3c368e1bfee))
+* :sparkles: add lazy component type in view type ([90af498](https://gitlab.com/aseman/web/packages-core/commit/90af498eb9803995c62640777e3c468515782aba))
+* :sparkles: add window environment ([4fd4139](https://gitlab.com/aseman/web/packages-core/commit/4fd4139fade3e0c6a24a61990614103bb2c6f3d4))
+* :sparkles: set translate3d instead of translateX in slide container ([364eaa7](https://gitlab.com/aseman/web/packages-core/commit/364eaa7d8e159f1a69cd98a5f5fa9d040beecc7e))
+
+
+### Bug Fixes
+
+* :bug: change the name of activeTabConfig to bottomSheetContainerConfig ([84e2904](https://gitlab.com/aseman/web/packages-core/commit/84e2904e9480538b00c537d11c2568e7d52ee5a2))
+* :bug: fix open tab container animation ([f7dad44](https://gitlab.com/aseman/web/packages-core/commit/f7dad4462a2f46afdca670896f82c82f5e5fb1ac))
+* :bug: fix tab container open animations ([a7dd621](https://gitlab.com/aseman/web/packages-core/commit/a7dd621cbc03c8595947c934144b6cc263daa524))
+* :bug: fix view animations ([29a0cb7](https://gitlab.com/aseman/web/packages-core/commit/29a0cb73657dc3ae620530fceb8d36db088d6ba8))
 
 ## [0.1.4](https://gitlab.com/aseman/web/packages-core/compare/v0.1.3...v0.1.4) (2024-02-26)
 

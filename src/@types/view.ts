@@ -1,3 +1,5 @@
+import { LazyExoticComponent } from "react";
+
 export enum ViewEventType {
   onInit = "onInit",
   onEnter = "onEnter",
@@ -24,7 +26,9 @@ export interface ViewType<T> {
   id: string;
   data?: T;
   className?: string;
-  component: (props?: any) => JSX.Element;
+  component:
+    | ((props?: any) => JSX.Element)
+    | LazyExoticComponent<() => JSX.Element>;
   onClose?: (res?: any) => void;
   onClosed?: (res?: any) => void;
   onOpen?: () => void;

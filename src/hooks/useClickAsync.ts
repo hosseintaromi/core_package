@@ -2,35 +2,37 @@ import { MutableRefObject, useRef } from "react";
 import { useInit } from "./useInit";
 
 export const useClickAsync = <T>(
-  asyncRequest: () => Promise<T>,
+  asyncRequest: (callback: VoidFunction) => Promise<T> | void,
   success?: (res: T) => void,
-  failed?: (error: string) => void,
+  failed?: (exp: string) => void,
 ) => {
   const loadingRef = useRef<boolean>(false);
+  const cssClass = "loading";
 
   const elRef: MutableRefObject<any | undefined> = { current: undefined };
 
-  useInit(() => {
-    const element = elRef.current;
-    if (!element) {
-      return;
+  const setLoading = (loading: boolean) => {
+    const el: HTMLElement = elRef.current;
+    loadingRef.current = loading;
+    if (loading) {
+      el.classList.add(cssClass);
+      el.setAttribute("disabled", "");
+    } else {
+      el.classList.remove(cssClass);
+      el.removeAttribute("disabled");
     }
-    element.addEventListener("click", async () => {
-      try {
-        if (loadingRef.current) {
-          return;
-        }
-        element.classList.add("loading");
-        loadingRef.current = true;
-        const res = await asyncRequest();
-        loadingRef.current = false;
-        element.classList.remove("loading");
-        success?.(res);
-      } catch (error: any) {
-        element.classList.remove("loading");
-        loadingRef.current = false;
-        failed?.(error);
+  };
+
+  useInit(() => {
+    elRef.current?.addEventListener("click", async () => {
+      if (loadingRef.current) {
+        return;
       }
+      setLoading(true);
+      asyncRequest(() => setLoading(false))
+        ?.then((res) => success?.(res))
+        .catch((exp) => failed?.(exp))
+        .finally(() => setLoading(false));
     });
   });
 

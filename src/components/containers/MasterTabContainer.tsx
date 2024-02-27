@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import { ViewContextProvider } from "context/ViewContextProvider";
 import { useViewManage } from "hooks";
 import { ViewContainerType } from "types";
@@ -29,11 +29,11 @@ export const MasterTabContainer = () => {
   ) : (
     <div className="tab-wrapper">
       {viewsInfo?.map((viewInfo) => (
-        <React.Fragment key={viewInfo.id}>
+        <Fragment key={viewInfo.id}>
           <ViewContextProvider viewInfo={viewInfo}>
             <ViewComponent viewInfo={viewInfo} />
           </ViewContextProvider>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, memo, createContext } from "react";
+import { ReactNode, useEffect, useRef, createContext, memo } from "react";
 import { closeView, openView } from "utils";
 import {
   ViewEventType,
@@ -101,5 +101,5 @@ export const ViewContextProvider = memo(
       </ViewContext.Provider>
     );
   },
-  () => true,
+  () => process.env.NODE_ENV === "production",
 );
