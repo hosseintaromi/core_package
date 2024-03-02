@@ -84,9 +84,6 @@ export const ViewContextProvider = memo(
           emitEvent(ViewEventType.onClosing, e);
         },
       };
-      return () => {
-        removeContainer(viewInfo.view.type);
-      };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

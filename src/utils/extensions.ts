@@ -1,3 +1,5 @@
+import type { RefObject } from "react";
+
 /* eslint-disable func-names */
 declare global {
   interface Event {
@@ -81,3 +83,5 @@ export function removeEventListenerEl(
 ) {
   target?.removeEventListener(event, listener);
 }
+
+export const getRefValue = <T>(ref: RefObject<T>) => ref.current as T;
