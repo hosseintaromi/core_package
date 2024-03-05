@@ -1,0 +1,35 @@
+/* Modal */
+.modal-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+}
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.32);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.modal-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+}
+.modal-message {
+  color: #777;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+.modal-btn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+.modal-btn .btn + .btn {
+  margin-right: 0.75rem;
+}

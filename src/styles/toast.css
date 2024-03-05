@@ -1,5 +1,13 @@
+/* Toast */
+.toasts-container {
+  position: absolute;
+  right: 1rem;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1090;
+  pointer-events: none;
+}
 .toast {
-  position: relative;
   --toast-color: #212529;
   --toast-bg: #fff;
   --toast-border-radius: var(--border-radius);
@@ -20,17 +28,19 @@
   border-radius: var(--toast-border-radius);
   box-shadow: var(--toast-box-shadow);
   padding-left: calc(var(--toast-close-width) + var(--toast-padding-x) + 1rem);
-}
-.toast-success {
-  --toast-bg: #50cd89;
-  --toast-color: #fff;
+  position: relative;
 }
 .toast-danger {
   --toast-bg: #f1416c;
   --toast-color: #fff;
 }
+.toast-success {
+  --toast-bg: #50cd89;
+  --toast-color: #fff;
+}
 .toast-close {
   --toast-close-color: #000;
+  --toast-close-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e);
   --toast-close-opacity: 0.5;
   --toast-close-hover-opacity: 0.75;
   --toast-close-focus-opacity: 1;
@@ -41,7 +51,7 @@
   height: var(--toast-close-height);
   padding: 0.25em 0.25em;
   color: var(--toast-close-color);
-  background: none;
+  background: transparent var(--toast-close-bg) center/1em auto no-repeat;
   border: 0;
   border-radius: 0.375rem;
   opacity: var(--toast-close-opacity);
@@ -56,8 +66,4 @@
 }
 .toast-close:focus {
   opacity: var(--toast-close-focus-opacity);
-}
-.toast-close svg {
-  width: 100%;
-  height: auto;
 }

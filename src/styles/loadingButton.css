@@ -1,3 +1,4 @@
+/* Buttons */
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -14,4 +15,20 @@
   border-radius: 0.25rem;
   user-select: none;
   font-family: inherit;
+}
+.btn-error {
+  background-color: #ed6b75;
+  color: #fff;
+}
+.btn-error:hover,
+.btn-error:focus {
+  background-color: #e73d4a;
+}
+.btn-success {
+  color: #fff;
+  background-color: #36c6d3;
+}
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #27a4b0;
 }
