@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.12](https://gitlab.com/aseman/web/packages-core/compare/v0.1.11...v0.1.12) (2024-03-06)
+
 ## [0.1.11](https://gitlab.com/aseman/web/packages-core/compare/v0.1.11-alpha.1...v0.1.11) (2024-03-06)
 
 
