@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.11-alpha.1](https://gitlab.com/aseman/web/packages-core/compare/v0.1.11-alpha.0...v0.1.11-alpha.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* :bug: fix toast ui bugs ([a850142](https://gitlab.com/aseman/web/packages-core/commit/a85014253a9a2ddb05300bcb8f337887dfd8b49c))
+
 ## [0.1.11-alpha.0](https://gitlab.com/aseman/web/packages-core/compare/v0.1.10...v0.1.11-alpha.0) (2024-03-05)
 
 ## [0.1.10](https://gitlab.com/aseman/web/packages-core/compare/v0.1.10-alpha.0...v0.1.10) (2024-03-05)
