@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.11](https://gitlab.com/aseman/web/packages-core/compare/v0.1.11-alpha.1...v0.1.11) (2024-03-06)
+
+
+### Bug Fixes
+
+* :bug: tab styles added ([0443442](https://gitlab.com/aseman/web/packages-core/commit/0443442b6136b10658cef1cbef4c1e7238caa1ee))
+
 ## [0.1.11-alpha.1](https://gitlab.com/aseman/web/packages-core/compare/v0.1.11-alpha.0...v0.1.11-alpha.1) (2024-03-06)
 
 

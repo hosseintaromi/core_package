@@ -1,6 +1,6 @@
 {
   "name": "@pouyan-web/core",
-  "version": "0.1.11-alpha.1",
+  "version": "0.1.11",
   "description": "core application for navigation in react projects",
   "license": "ISC",
   "author": "@pouyan-web",
