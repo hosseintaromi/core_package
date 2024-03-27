@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef, createContext, memo } from "react";
-import { closeView, openView, removeContainer } from "utils";
+import { closeView, openView } from "../utils";
 import {
   ViewEventType,
   ViewEvents,
@@ -8,7 +8,7 @@ import {
   ViewContextType,
   ViewType,
   CloseType,
-} from "types";
+} from "../@types";
 
 export const ViewContext = createContext<ViewContextType>({} as any);
 

@@ -1,4 +1,4 @@
-import { useClickAsync } from "hooks";
+import { useClickAsync } from "../hooks";
 
 const ClickAsyncComponent = () => {
   const clickAsync = useClickAsync((callback) => {

@@ -1,6 +1,6 @@
 import { useRef, ReactNode, createContext } from "react";
-import { useFn, useInit } from "hooks";
-import { ObjectObservable } from "utils";
+import { useFn, useInit } from "../hooks";
+import { ObjectObservable } from "../utils";
 
 type GetAsyncLocale = (localeKey: string) => Promise<any>;
 

@@ -1,5 +1,5 @@
-import { useView } from "hooks";
-import { MessageAlert, MessageType } from "types";
+import { useView } from "../hooks";
+import { MessageAlert, MessageType } from "../@types";
 import "../styles/alert.css";
 
 export function Alert() {

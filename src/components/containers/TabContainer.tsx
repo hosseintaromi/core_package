@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
 import {
   closeTabAnimationConfig,
   openTabContainerConfig,
-} from "src/utils/viewAnimations";
-import { ViewContainerType } from "types";
-import { ViewComponent } from "../_index";
+} from "../../utils/viewAnimations";
+import { ViewContainerType } from "../../@types";
+import { ViewComponent } from "../index";
 
 export const TabContainer = () => {
   const { viewsInfo } = useViewManage(

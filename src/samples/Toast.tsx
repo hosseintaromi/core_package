@@ -1,6 +1,6 @@
-import { ModalContainer, ToastContainer } from "components";
-import { MessageType } from "../@types/commonView";
-import { openAlert, openConfirm, openToast } from "../utils/commonViews";
+import { ModalContainer, ToastContainer } from "../components";
+import { MessageType } from "../@types";
+import { openAlert, openConfirm, openToast } from "../utils";
 
 interface Props {
   message: string;

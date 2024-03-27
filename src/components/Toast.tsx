@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { useInit, useView } from "hooks";
-import { MessageToast, MessageType } from "types";
+import { useInit, useView } from "../hooks";
+import { MessageToast, MessageType } from "../@types";
 import "../styles/toast.css";
 
 export function Toast() {

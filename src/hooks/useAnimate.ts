@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { requestAnimation } from "utils";
+import { requestAnimation } from "../utils";
 import { useFn } from "./useFn";
 import { useInit } from "./useInit";
 

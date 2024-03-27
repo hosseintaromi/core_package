@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IObservable } from "src/utils/observable";
+import { IObservable } from "../utils/observable";
 import { useFn } from "./useFn";
 import { useInit } from "./useInit";
 

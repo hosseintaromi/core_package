@@ -1,5 +1,5 @@
 import { useRef, useEffect, RefObject } from "react";
-import { getRefValue } from "utils";
+import { getRefValue } from "../utils";
 
 export type UseSaveScrollType = {
   key: string | number;

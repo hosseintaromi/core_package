@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from "react";
-import { EventType, useEvent, useInit } from "hooks";
-import { ViewInfo } from "types";
+import { ViewInfo } from "../@types";
+import { EventType, useEvent, useInit } from "../hooks";
 
 export function Scrollable({
   children,

@@ -1,4 +1,4 @@
-import { Alert, Confirm, LoadingDialog, Toast } from "components";
+import { Alert, Confirm, LoadingDialog, Toast } from "../components";
 import {
   MessageAlert,
   MessageConfirm,
@@ -6,7 +6,7 @@ import {
   MessageLoadingViewModel,
   MessageToast,
   ViewContainerType,
-} from "types";
+} from "../@types";
 import { openView } from "./viewManager";
 
 export function openToast(message: MessageToast) {

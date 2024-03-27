@@ -9,12 +9,12 @@ import {
   ViewType,
   ViewEventConfigBase,
   ViewEventConfigClose,
-} from "types";
+} from "../@types";
 import {
   registerContainer,
   removeContainer,
   updateViewsByCloseType,
-} from "utils";
+} from "../utils";
 import { useAnimate } from "./useAnimate";
 import { useInit } from "./useInit";
 import { useFn } from "./useFn";
