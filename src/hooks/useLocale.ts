@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { LocaleKeyTypes } from "types";
-import { LocaleContext } from "context/LocaleContextProvider";
-import { useFn, useInit } from "./_index";
+import { LocaleKeyTypes } from "../@types";
+import { LocaleContext } from "../context/LocaleContextProvider";
+import { useFn, useInit } from "./index";
 
 export const useLocale = <T extends LocaleKeyTypes = LocaleKeyTypes>() => {
   const { lang, localeObservable, getLocaleKey, setLocaleKey } =

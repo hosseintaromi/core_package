@@ -1,4 +1,4 @@
-import { ViewEvent } from "types";
+import { ViewEvent } from "../@types";
 import { bezier } from "./bezier";
 
 const slideIn = bezier(0.25, 1, 0.5, 1);

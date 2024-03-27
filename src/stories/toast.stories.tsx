@@ -1,6 +1,6 @@
 import React from "react";
-import ToastSample from "src/samples/Toast";
-import { MessageType } from "../@types/commonView";
+import ToastSample from "../samples/Toast";
+import { MessageType } from "../@types";
 import "./general.css";
 
 export default {

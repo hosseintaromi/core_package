@@ -1,8 +1,8 @@
 import { Fragment, useRef } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
-import { bezier } from "utils";
-import { ViewComponent } from "../_index";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
+import { bezier } from "../../utils";
+import { ViewComponent } from "../index";
 
 export const DesktopLeftContainer = () => {
   const containerRef = useRef<HTMLDivElement>(null);

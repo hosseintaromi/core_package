@@ -1,6 +1,6 @@
 import { Suspense, useRef } from "react";
-import { useInit } from "hooks";
-import { ViewInfo } from "types";
+import { useInit } from "../hooks";
+import { ViewInfo } from "../@types";
 import { ErrorBoundaryWrapper } from "./ErrorBoundaryWrapper";
 
 export function ViewComponent({ viewInfo }: { viewInfo: ViewInfo }) {

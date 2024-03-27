@@ -31,24 +31,6 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "baseUrl": "./",
-    "paths": {
-      "types": [
-        "src/@types/_index"
-      ],
-      "components": [
-        "src/components/_index"
-      ],
-      "hooks": [
-        "src/hooks/_index"
-      ],
-      "utils": [
-        "src/utils/_index"
-      ],
-      "context/*": [
-        "src/context/*"
-      ]
-    }
   },
   "exclude": [
     "node_modules",

@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
-import { bezier } from "utils";
-import { ViewEvent } from "types";
-import { ViewComponent } from "../_index";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
+import { bezier } from "../../utils";
+import { ViewEvent } from "../../@types";
+import { ViewComponent } from "../index";
 
 export const DesktopRightContainer = () => {
   const openConfig: ViewEvent = {

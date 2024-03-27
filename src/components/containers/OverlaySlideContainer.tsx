@@ -1,9 +1,9 @@
 import { Fragment, MutableRefObject, useRef } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { EventType, useEvent, useFn, useViewManage } from "hooks";
-import { bezier, closeView, openView } from "utils";
-import { ViewEvent, ViewEventConfigClose } from "types";
-import { ViewComponent } from "../_index";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { EventType, useEvent, useFn, useViewManage } from "../../hooks";
+import { bezier, closeView, openView } from "../../utils";
+import { ViewEvent, ViewEventConfigClose } from "../../@types";
+import { ViewComponent } from "../index";
 
 export interface OverlayInlineData<T, U> {
   id?: string;

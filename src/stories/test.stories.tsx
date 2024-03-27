@@ -1,16 +1,16 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { openView } from "utils";
-import { ViewContainerType } from "types";
-import { useInit, useView } from "hooks";
+import { openView } from "../utils";
+import { ViewContainerType } from "../@types";
+import { useInit, useView } from "../hooks";
 import {
   BottomSheetContainer,
   MasterTabContainer,
   ModalContainer,
   TabContainer,
   ToastContainer,
-} from "components";
+} from "../components";
 import "../styles/index.css";
 
 export default {

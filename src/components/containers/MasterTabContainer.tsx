@@ -1,14 +1,14 @@
 import { Fragment } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
-import { ViewContainerType } from "types";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
+import { ViewContainerType } from "../../@types";
 import {
   activateTabConfig,
   closeTabAnimationConfig,
   onEnterTabContainerConfig,
   onLeaveContainerConfig,
-} from "src/utils/viewAnimations";
-import { ViewComponent } from "../_index";
+} from "../../utils/viewAnimations";
+import { ViewComponent } from "../index";
 
 export const MasterTabContainer = () => {
   const { viewsInfo } = useViewManage(

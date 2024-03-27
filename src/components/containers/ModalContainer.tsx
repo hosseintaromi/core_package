@@ -1,9 +1,9 @@
 import { Fragment, useRef } from "react";
-import { bezier, closeView } from "utils";
-import { useViewManage } from "hooks";
-import { ViewEvent, ViewContainerType } from "types";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { ViewComponent } from "../_index";
+import { bezier, closeView } from "../../utils";
+import { useViewManage } from "../../hooks";
+import { ViewEvent, ViewContainerType } from "../../@types";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { ViewComponent } from "../index";
 
 export const ModalContainer = () => {
   const slideIn = bezier(0.25, 1, 0.5, 1);

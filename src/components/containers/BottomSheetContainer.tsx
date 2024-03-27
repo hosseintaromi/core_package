@@ -1,10 +1,10 @@
 import { Fragment, useRef } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
-import { bezier, closeView } from "utils";
-import { ViewContainerType, ViewEvent } from "types";
-import { bottomSheetContainerConfig } from "src/utils/viewAnimations";
-import { Scrollable, ViewComponent } from "../_index";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
+import { bezier, closeView } from "../../utils";
+import { bottomSheetContainerConfig } from "../../utils/viewAnimations";
+import { ViewContainerType, ViewEvent } from "../../@types";
+import { Scrollable, ViewComponent } from "../index";
 
 export const BottomSheetContainer = () => {
   const slideIn = bezier(0.25, 1, 0.5, 1);

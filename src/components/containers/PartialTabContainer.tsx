@@ -1,12 +1,12 @@
 import { Fragment } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
 import {
   closeTabAnimationConfig,
   onLeaveContainerConfig,
   openTabContainerConfig,
-} from "src/utils/viewAnimations";
-import { ViewComponent } from "../_index";
+} from "../../utils/viewAnimations";
+import { ViewComponent } from "../index";
 
 export const PartialTabContainer = ({
   containerName,

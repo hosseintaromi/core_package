@@ -1,5 +1,5 @@
 import { Fragment, MutableRefObject, useRef } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
 import {
   EventType,
   TouchEvent,
@@ -8,10 +8,10 @@ import {
   useFn,
   useInit,
   useViewManage,
-} from "hooks";
-import { openView } from "utils";
+} from "../../hooks";
+import { openView } from "../../utils";
 import { ElementRef } from "./ElementRef";
-import { ViewComponent } from "../_index";
+import { ViewComponent } from "../index";
 
 interface MoveInfo {
   from: number;

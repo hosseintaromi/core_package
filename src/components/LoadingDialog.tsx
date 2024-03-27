@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useInit, useView } from "hooks";
+import { useInit, useView } from "../hooks";
 import {
   MessageLoadingResponseData,
   MessageLoadingViewModel,
   MessageLoadingResponseType,
-} from "../@types/commonView";
+} from "../@types";
 import "../styles/loadingButton.css";
 
 export function LoadingDialog() {
