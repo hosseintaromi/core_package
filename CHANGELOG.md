@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.14](https://gitlab.com/aseman/web/packages-core/compare/v0.1.13...v0.1.14) (2024-03-27)
+
+
+### Bug Fixes
+
+* change paths for handle issue in index.d.ts ([755e47f](https://gitlab.com/aseman/web/packages-core/commit/755e47fdda34a2a9f7f4f1dcffb865b07bb0c895))
+
 ## [0.1.13](https://gitlab.com/aseman/web/packages-core/compare/v0.1.12...v0.1.13) (2024-03-06)
 
 
