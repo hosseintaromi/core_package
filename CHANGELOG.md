@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.15](https://gitlab.com/aseman/web/packages-core/compare/v0.1.14...v0.1.15) (2024-04-13)
+
+
+### Bug Fixes
+
+* fix toast close icon ([d1fb040](https://gitlab.com/aseman/web/packages-core/commit/d1fb04089f1628114d5e9b1c75c313bdd5b38495))
+
 ## [0.1.14](https://gitlab.com/aseman/web/packages-core/compare/v0.1.13...v0.1.14) (2024-03-27)
 
 
