@@ -8,6 +8,7 @@ import {
   ViewContextType,
   ViewType,
   CloseType,
+  ViewUpdateEventArg,
 } from "types";
 
 export const ViewContext = createContext<ViewContextType>({} as any);
@@ -21,7 +22,10 @@ export const ViewContextProvider = ({
 }) => {
   const eventListeners = useRef<any>({});
 
-  const addEvent = (type: ViewEventType, event?: (e: ViewEventArg) => void) => {
+  const addEvent = (
+    type: ViewEventType,
+    event?: ((e: ViewEventArg) => void) | ((e: ViewUpdateEventArg) => void),
+  ) => {
     if (!event) {
       return;
     }
@@ -34,7 +38,7 @@ export const ViewContextProvider = ({
 
   const removeEvent = (
     type: ViewEventType,
-    event?: (e: ViewEventArg) => void,
+    event?: ((e: ViewEventArg) => void) | ((e: ViewUpdateEventArg) => void),
   ) => {
     if (!event) {
       return;
@@ -47,14 +51,16 @@ export const ViewContextProvider = ({
     addEvent(ViewEventType.onEnter, events.onEnter);
     addEvent(ViewEventType.onLeave, events.onLeave);
     addEvent(ViewEventType.onClosing, events.onClosing);
+    addEvent(ViewEventType.onUpdate, events.onUpdate);
     return () => {
       removeEvent(ViewEventType.onEnter, events.onEnter);
       removeEvent(ViewEventType.onLeave, events.onLeave);
       removeEvent(ViewEventType.onClosing, events.onClosing);
+      removeEvent(ViewEventType.onUpdate, events.onUpdate);
     };
   };
 
-  const emitEvent = (type: ViewEventType, e: ViewEventArg) => {
+  const emitEvent: any = (type: ViewEventType, e: ViewEventArg) => {
     const listeners: ((e: ViewEventArg) => void)[] =
       eventListeners.current[type];
     listeners?.forEach((listener) => {
@@ -84,6 +90,9 @@ export const ViewContextProvider = ({
       },
       onClosing: (e: ViewEventArg) => {
         emitEvent(ViewEventType.onClosing, e);
+      },
+      onUpdate: (e: ViewUpdateEventArg) => {
+        emitEvent(ViewEventType.onUpdate, e);
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

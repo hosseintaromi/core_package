@@ -5,6 +5,7 @@ export enum ViewEventType {
   onEnter = "onEnter",
   onLeave = "onLeave",
   onClosing = "onClosing",
+  onUpdate = "onUpdate",
 }
 
 export interface ViewContainerConfig {
@@ -21,14 +22,16 @@ export interface ViewConfig {
   onClickedBackdrop?: () => void;
 }
 
+type ComponentType =
+  | ((props?: any) => JSX.Element)
+  | LazyExoticComponent<() => JSX.Element>;
+
 export interface ViewType<T> {
   type: string;
   id: string;
   data?: T;
   className?: string;
-  component:
-    | ((props?: any) => JSX.Element)
-    | LazyExoticComponent<() => JSX.Element>;
+  component: ComponentType;
   onClose?: (res?: any) => void;
   onClosed?: (res?: any) => void;
   onOpen?: () => void;
@@ -40,6 +43,11 @@ export interface ViewEventArg {
   fromView?: ViewType<any>;
   toView?: ViewType<any>;
   data?: any;
+}
+
+export interface ViewUpdateEventArg {
+  viewId: string;
+  component: ComponentType;
 }
 
 export enum ChangeContainerEventType {
@@ -64,17 +72,22 @@ export interface ViewContainerDataType {
     fromView: ViewType<any>,
     eventType: ChangeContainerEventType,
   ) => Promise<any>;
+  updateView?: (viewUpdate: ViewUpdateEventArg) => void;
 }
 
 export interface ViewEvents {
   onEnter?: (e: ViewEventArg) => void;
   onLeave?: (e: ViewEventArg) => void;
   onClosing?: (e: ViewEventArg) => void;
+  onUpdate?: (e: ViewUpdateEventArg) => void;
 }
 
 export interface ViewContextType {
   listenEvents: (events: ViewEvents) => () => void;
-  emitEvent: (type: ViewEventType, e: ViewEventArg) => void;
+  emitEvent: <T = ViewEventArg | ViewUpdateEventArg>(
+    type: ViewEventType,
+    e: T,
+  ) => void;
   getViewData: () => any;
   close?: <T>(type: CloseType, res?: T) => void;
   openView?: <T = any>(view: Omit<ViewType<T>, "type">) => void;
