@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.17](https://gitlab.com/aseman/web/packages-core/compare/v0.1.16...v0.1.17) (2024-04-15)
+
+
+### Bug Fixes
+
+* close view when animating ([91d6a13](https://gitlab.com/aseman/web/packages-core/commit/91d6a13e5c707683c7ed4c2b0d6fe55acf43e962))
+
 ## [0.1.16](https://gitlab.com/aseman/web/packages-core/compare/v0.1.15...v0.1.16) (2024-04-15)
 
 
