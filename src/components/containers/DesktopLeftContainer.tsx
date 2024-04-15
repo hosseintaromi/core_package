@@ -25,12 +25,12 @@ export const DesktopLeftContainer = () => {
             prevStyle.position = "absolute";
             prevStyle.top = "0";
             prevStyle.width = "100%";
-            prevStyle.zIndex = "2";
+            prevStyle.zIndex = "1000";
           }
           if (newStyle) {
             newStyle.display = "block";
             newStyle.opacity = "1";
-            newStyle.zIndex = "2";
+            newStyle.zIndex = "1000";
           }
         }
       },
@@ -75,11 +75,11 @@ export const DesktopLeftContainer = () => {
           const prevStyle = closeViewEl?.ref.style;
           if (newStyle) {
             newStyle.display = "block";
-            newStyle.zIndex = "2";
+            newStyle.zIndex = "1001";
             newStyle.transform = "translateX(100%)";
           }
           if (prevStyle) {
-            prevStyle.zIndex = "1";
+            prevStyle.zIndex = "1000";
           }
         }
       },

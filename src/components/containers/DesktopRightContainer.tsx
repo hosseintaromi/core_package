@@ -12,14 +12,14 @@ export const DesktopRightContainer = () => {
       const newStyle = newView.ref.style;
       const prevStyle = prevView?.ref.style;
       newStyle.display = "block";
-      newStyle.zIndex = "2";
+      newStyle.zIndex = "1001";
       newStyle.transform = "translateX(100%)";
       newStyle.position = "absolute";
       newStyle.top = "0";
       newStyle.width = "100%";
 
       if (prevStyle) {
-        prevStyle.zIndex = "1";
+        prevStyle.zIndex = "1000";
       }
     },
     animate(t, newView, prevView) {
@@ -47,11 +47,11 @@ export const DesktopRightContainer = () => {
       closeStyle.position = "absolute";
       // closeStyle.top = "0";
       // closeStyle.width = "100%";
-      closeStyle.zIndex = "2";
+      closeStyle.zIndex = "1001";
       if (activeStyle) {
         activeStyle.display = "block";
         activeStyle.opacity = "1";
-        activeStyle.zIndex = "1";
+        activeStyle.zIndex = "1000";
       }
     },
     animate(t, closeView, activeView) {
