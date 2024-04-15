@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.20](https://gitlab.com/aseman/web/packages-core/compare/v0.1.19...v0.1.20) (2024-04-15)
+
+
+### Bug Fixes
+
+* fixed overlay zIndex bug ([9239b06](https://gitlab.com/aseman/web/packages-core/commit/9239b065d25a9a8f5003664530d5aa9460f27703))
+
 ## [0.1.19](https://gitlab.com/aseman/web/packages-core/compare/v0.1.18...v0.1.19) (2024-04-15)
 
 ## [0.1.18](https://gitlab.com/aseman/web/packages-core/compare/v0.1.17...v0.1.18) (2024-04-15)
