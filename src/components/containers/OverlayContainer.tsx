@@ -142,7 +142,7 @@ export const OverlayContainer = () => {
       inset: "0",
       position: "absolute",
       display: "none",
-      zIndex: "1",
+      zIndex: "1000",
     });
   });
 

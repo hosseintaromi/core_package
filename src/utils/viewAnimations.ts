@@ -130,11 +130,11 @@ export const openTabContainerConfig: ViewEvent = {
     const prevStyle = prevView?.ref?.style;
     newStyle.willChange = "transform, filter";
     newStyle.display = "block";
-    newStyle.zIndex = "2";
+    newStyle.zIndex = "1001";
     newStyle.transform = "translateX(100%)";
 
     if (prevStyle) {
-      prevStyle.zIndex = "1";
+      prevStyle.zIndex = "1000";
     }
   },
   animate(t, newView, prevView) {
@@ -223,7 +223,7 @@ export const onOpenToastConfig: ViewEvent = {
   start(newView) {
     const newViewStyle = newView.ref.style;
     newViewStyle.position = "relative";
-    newViewStyle.zIndex = "1";
+    newViewStyle.zIndex = "1000";
     newViewStyle.opacity = "0";
   },
   animate(t, newView) {

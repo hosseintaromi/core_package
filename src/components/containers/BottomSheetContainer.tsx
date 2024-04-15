@@ -21,13 +21,13 @@ export const BottomSheetContainer = () => {
         newViewStyle.display = "block";
         newViewStyle.opacity = "0";
         const length = viewsInfo.length;
-        newViewStyle.zIndex = `${length + 1}`;
+        newViewStyle.zIndex = `${1000 + length + 1}`;
         newViewStyle.transform = "translateY(100%)";
 
         if (prevView?.ref) {
-          prevView.ref.style.zIndex = `${length - 1}`;
+          prevView.ref.style.zIndex = `${1000 + length - 1}`;
         }
-        backDropRefHook.current.style.zIndex = `${length}`;
+        backDropRefHook.current.style.zIndex = `${1000 + length}`;
       },
       animate(t, newView) {
         const p = slideIn(t);
@@ -47,7 +47,7 @@ export const BottomSheetContainer = () => {
         const activeViewStyle = activeViewEl?.ref.style;
         if (activeViewStyle) {
           activeViewStyle.opacity = "0";
-          activeViewStyle.zIndex = `${viewsInfo.length + 1}`;
+          activeViewStyle.zIndex = `${1000 + viewsInfo.length + 1}`;
         }
         closedViewStyle.opacity = "1";
       },
@@ -69,7 +69,9 @@ export const BottomSheetContainer = () => {
       end(closeViewEl) {
         const closedViewStyle = closeViewEl.ref.style;
         closedViewStyle.display = "none";
-        backDropRefHook.current.style.zIndex = viewsInfo.length.toString();
+        backDropRefHook.current.style.zIndex = (
+          1000 + viewsInfo.length
+        ).toString();
       },
     } as ViewEvent,
     bottomSheetContainerConfig,
