@@ -44,20 +44,24 @@ export const useViewManage = (
       event?: ViewEvent,
       config?: T,
     ) =>
-      new Promise<any>((resolve) => {
+      new Promise<any>((resolve, reject) => {
         if (!event) {
           resolve(true);
         }
         event?.start?.(newView, prevView, config);
+        const animateRef = viewAnimateRef.current;
+        if (animateRef[id]) {
+          animateRef[id]?.();
+        }
         if (config?.disableAnimate || !event?.duration) {
           event?.animate?.(1, newView, prevView, config);
           event?.end?.(newView, prevView, config);
+          delete animateRef[id];
           resolve(true);
           return;
         }
         document.body.classList.add("animating");
-        const animateRef = viewAnimateRef.current;
-        animateRef[id]?.();
+
         animateRef[id] = requestAnimate(
           event.duration,
           (t: number) => {
@@ -69,13 +73,16 @@ export const useViewManage = (
             document.body.classList.remove("animating");
             resolve(true);
           },
+          () => {
+            reject();
+          },
         );
       }),
   );
 
   const openView = useFn(
     (newView: ViewType<any>) =>
-      new Promise((resolve) => {
+      new Promise((resolve, reject) => {
         const newViewInfo: ViewInfo = {
           id: newView.id,
           view: newView,
@@ -95,21 +102,25 @@ export const useViewManage = (
               resolve(true);
               return;
             }
-            await handleViewEvent(
-              newView.id,
-              {
-                view: newView,
-                ref: newViewInfo.elRef as any,
-              },
-              currentViewInfo
-                ? {
-                    view: currentViewInfo?.view,
-                    ref: currentViewInfo?.elRef as any,
-                  }
-                : undefined,
-              openConfig,
-              { disableAnimate },
-            );
+            try {
+              await handleViewEvent(
+                newView.id,
+                {
+                  view: newView,
+                  ref: newViewInfo.elRef as any,
+                },
+                currentViewInfo
+                  ? {
+                      view: currentViewInfo?.view,
+                      ref: currentViewInfo?.elRef as any,
+                    }
+                  : undefined,
+                openConfig,
+                { disableAnimate },
+              );
+            } catch {
+              reject(Error("Canceled"));
+            }
             if (currentViewInfo) {
               currentViewInfo.events?.onLeave?.({
                 toView: newView,
@@ -153,21 +164,25 @@ export const useViewManage = (
         toView: newActiveView,
       });
 
-      await handleViewEvent<ViewEventConfigClose>(
-        view.id,
-        {
-          view: viewsInfo[index].view,
-          ref: viewsInfo[index].elRef as any,
-        },
-        activeViewInfo
-          ? {
-              view: activeViewInfo.view,
-              ref: activeViewInfo.elRef as any,
-            }
-          : undefined,
-        closeConfig,
-        { disableAnimate, closeType },
-      );
+      try {
+        await handleViewEvent<ViewEventConfigClose>(
+          view.id,
+          {
+            view: viewsInfo[index].view,
+            ref: viewsInfo[index].elRef as any,
+          },
+          activeViewInfo
+            ? {
+                view: activeViewInfo.view,
+                ref: activeViewInfo.elRef as any,
+              }
+            : undefined,
+          closeConfig,
+          { disableAnimate, closeType },
+        );
+      } catch {
+        throw Error("Canceled");
+      }
 
       if (activeViewInfo) {
         activeViewInfo.events?.onEnter?.({
