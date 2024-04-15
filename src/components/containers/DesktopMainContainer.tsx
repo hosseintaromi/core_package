@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useViewManage } from "hooks";
-import { ViewEvent } from "types";
-import { ViewComponent } from "../_index";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useViewManage } from "../../hooks";
+import { ViewEvent } from "../../@types";
+import { ViewComponent } from "../index";
 
 export const DesktopMainContainer = () => {
   const { viewsInfo } = useViewManage(

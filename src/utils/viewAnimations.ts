@@ -1,4 +1,4 @@
-import { ViewEvent } from "types";
+import { ViewEvent } from "../@types";
 import { bezier } from "./bezier";
 
 const slideIn = bezier(0.25, 1, 0.5, 1);
@@ -128,6 +128,7 @@ export const openTabContainerConfig: ViewEvent = {
   start(newView, prevView) {
     const newStyle = newView.ref.style;
     const prevStyle = prevView?.ref?.style;
+    newStyle.willChange = "transform, filter";
     newStyle.display = "block";
     newStyle.zIndex = "2";
     newStyle.transform = "translateX(100%)";

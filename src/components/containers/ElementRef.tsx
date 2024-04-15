@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from "react";
-import { useInit } from "hooks";
+import { useInit } from "../../hooks";
 
 export const ElementRef = ({
   className,

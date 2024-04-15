@@ -1,4 +1,4 @@
-import { useView } from "hooks";
+import { useView } from "../hooks";
 
 export interface Option {
   label: string;

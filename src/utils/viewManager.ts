@@ -6,7 +6,7 @@ import {
   ViewContainerDataType,
   ViewType,
   ViewUpdateEventArg,
-} from "types";
+} from "../@types";
 import { listenBack, unListenBack } from "./historyManager";
 
 const viewContainers: { [name: string]: ViewContainerDataType } = {};
@@ -49,6 +49,7 @@ export function registerContainer(
 
 export function removeContainer(containerName: string) {
   if (viewContainers[containerName]) {
+    loadedViewsStack.removeAll((x) => x.type === containerName);
     delete viewContainers[containerName];
   }
 }

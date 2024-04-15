@@ -5,4 +5,4 @@ export * from "./Menu";
 export * from "./Toast";
 export * from "./Scrollable";
 export * from "./ViewComponent";
-export * from "./containers/_index";
+export * from "./containers/index";

@@ -1,6 +1,6 @@
 import { Component, createElement, ErrorInfo, isValidElement } from "react";
-import { ErrorBoundaryContext } from "context/ErrorBoundaryContext";
-import { ErrorBoundaryProps, FallbackProps } from "types";
+import { ErrorBoundaryContext } from "../context/ErrorBoundaryContext";
+import { ErrorBoundaryProps, FallbackProps } from "../@types";
 
 type ErrorBoundaryState =
   | {

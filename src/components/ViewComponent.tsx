@@ -1,8 +1,8 @@
 import { Suspense, useRef } from "react";
-import { useInit, useView } from "hooks";
-import { ViewInfo } from "types";
-import { useRerender } from "src/hooks/useRerender";
+import { useInit, useView } from "../hooks";
+import { ViewInfo } from "../@types";
 import { ErrorBoundaryWrapper } from "./ErrorBoundaryWrapper";
+import { useRerender } from "../hooks/useRerender";
 
 export function ViewComponent({ viewInfo }: { viewInfo: ViewInfo }) {
   const elRef = useRef<any>(null);
@@ -10,8 +10,10 @@ export function ViewComponent({ viewInfo }: { viewInfo: ViewInfo }) {
   const className = (viewInfo.view.className || "").trim();
 
   useInit(() => {
-    viewInfo.elRef = elRef.current;
-    viewInfo.onInit?.(elRef.current);
+    if (!viewInfo.elRef) {
+      viewInfo.elRef = elRef.current;
+      viewInfo.onInit?.(elRef.current);
+    }
   });
 
   const View = viewInfo.view.component;

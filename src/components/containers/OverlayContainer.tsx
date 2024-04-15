@@ -1,9 +1,9 @@
 import { Fragment, useRef } from "react";
-import { ViewContextProvider } from "context/ViewContextProvider";
-import { useInit, useViewManage } from "hooks";
-import { setStyle, bezier, closeView } from "utils";
-import { OverlayPositionType, ViewEvent } from "types";
-import { ViewComponent } from "../_index";
+import { ViewContextProvider } from "../../context/ViewContextProvider";
+import { useInit, useViewManage } from "../../hooks";
+import { setStyle, bezier, closeView } from "../../utils";
+import { OverlayPositionType, ViewEvent } from "../../@types";
+import { ViewComponent } from "../index";
 
 interface OverlayParamsType {
   target: HTMLElement;

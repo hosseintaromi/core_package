@@ -1,6 +1,6 @@
 import { MutableRefObject, ReactNode, forwardRef, useEffect } from "react";
-import { OverlayPositionType } from "types";
-import { useFn, useInit, useOverlay } from "hooks";
+import { OverlayPositionType } from "../../@types";
+import { useFn, useInit, useOverlay } from "../../hooks";
 
 type PropsType = {
   children: ReactNode;

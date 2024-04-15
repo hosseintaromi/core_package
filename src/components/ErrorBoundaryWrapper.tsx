@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ErrorBoundary } from "utils";
+import { ErrorBoundary } from "../utils/errorBoundary";
 
 type ErrorBoundaryWrapperPropsType = {
   children: ReactNode;

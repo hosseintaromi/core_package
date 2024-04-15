@@ -1,6 +1,6 @@
-import { Overlay, OverlayContainer } from "components";
-import { useInit } from "hooks";
 import { useRef, useState } from "react";
+import { useInit } from "../hooks";
+import { Overlay, OverlayContainer } from "../components";
 
 const ClickAsyncComponent = () => {
   const [name, setName] = useState<string>("taghi");

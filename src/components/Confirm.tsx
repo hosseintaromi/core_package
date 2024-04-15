@@ -1,5 +1,6 @@
-import { useView } from "hooks";
-import type { MessageConfirm } from "types";
+import { useView } from "../hooks";
+import { MessageConfirm } from "../@types";
+import "../styles/modal.css";
 import "../styles/confirm.css";
 
 export function Confirm() {

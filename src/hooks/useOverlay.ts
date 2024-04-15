@@ -1,6 +1,6 @@
 import { MutableRefObject, useCallback, useEffect, useRef } from "react";
-import { closeView, openView, updateView } from "utils";
-import { OverlayPositionType } from "types";
+import { closeView, openView, updateView } from "../utils";
+import { OverlayPositionType } from "../@types";
 import { EventType, useEvent } from "./useEvent";
 
 export interface OverlayData<T, U> {
