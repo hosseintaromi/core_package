@@ -84,6 +84,7 @@ export const OverlayContainer = () => {
         setStyle(newViewEl, {
           position: "absolute",
           opacity: "0",
+          zIndex: "1001",
         });
 
         const setPos = (setPositionRef.current = () => {
