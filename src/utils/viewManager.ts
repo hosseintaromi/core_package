@@ -5,6 +5,7 @@ import {
   ViewContainerConfig,
   ViewContainerDataType,
   ViewType,
+  ViewUpdateEventArg,
 } from "../@types";
 import { listenBack, unListenBack } from "./historyManager";
 
@@ -27,6 +28,7 @@ export function registerContainer(
     fromView: ViewType<any>,
     eventType: ChangeContainerEventType,
   ) => Promise<any>,
+  updateView?: (viewUpdate: ViewUpdateEventArg) => void,
 ) {
   if (viewContainers[containerName]) {
     // console.warn("ViewModule", "Duplicate container type");
@@ -41,6 +43,7 @@ export function registerContainer(
     closeView,
     activateView,
     changeContainer,
+    updateView,
   };
 }
 
@@ -170,6 +173,19 @@ export async function closeView<T>(
     setViewInProgress(containerType, viewId, false);
   } catch {
     setViewInProgress(containerType, viewId, false);
+  }
+}
+
+export async function updateView(
+  viewUpdate: ViewUpdateEventArg,
+  containerType: string,
+) {
+  if (!viewUpdate.viewId || !containerType) {
+    return;
+  }
+  const container = viewContainers[containerType];
+  if (container) {
+    container.updateView?.(viewUpdate);
   }
 }
 

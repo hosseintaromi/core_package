@@ -9,6 +9,7 @@ import {
   ViewType,
   ViewEventConfigBase,
   ViewEventConfigClose,
+  ViewUpdateEventArg,
 } from "../@types";
 import {
   registerContainer,
@@ -243,6 +244,13 @@ export const useViewManage = (
     },
   );
 
+  const updateView = useFn((viewUpdate: ViewUpdateEventArg) => {
+    const activeViewInfo = viewsInfo.find(
+      (x) => x.id === activeViewIdRef.current,
+    );
+    activeViewInfo?.events?.onUpdate?.(viewUpdate);
+  });
+
   useInit(() => {
     registerContainer(
       type,
@@ -252,6 +260,7 @@ export const useViewManage = (
       closeView,
       activateView,
       changeContainer,
+      updateView,
     );
     return () => {
       removeContainer(type);

@@ -1,25 +1,27 @@
-import { useClickAsync } from "../hooks";
+import { useRef, useState } from "react";
+import { useInit } from "../hooks";
+import { Overlay, OverlayContainer } from "../components";
 
 const ClickAsyncComponent = () => {
-  const clickAsync = useClickAsync((callback) => {
-    setTimeout(() => {
-      callback();
-    }, 3000);
-  });
+  const [name, setName] = useState<string>("taghi");
+  const overlayRef = useRef<any>();
 
-  const clickAsync2 = useClickAsync(
-    () =>
-      new Promise((res) => {
-        setTimeout(() => {
-          res(true);
-        }, 3000);
-      }),
-  );
+  const toggle = (e: any) => overlayRef.current?.toggle(e);
+
+  useInit(() => {
+    setTimeout(() => {
+      setName("saaed");
+    }, 5000);
+  });
 
   return (
     <>
-      <button ref={clickAsync}>Click Async</button>
-      <button ref={clickAsync2}>Click Async2</button>
+      <h1>{name}</h1>
+      <Overlay ref={overlayRef}>
+        <h1>{name}</h1>
+      </Overlay>
+      <button onClick={toggle}>toggle</button>
+      <OverlayContainer />
     </>
   );
 };

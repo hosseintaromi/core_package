@@ -1,13 +1,15 @@
 import { ReactNode, useEffect, useRef, createContext, memo } from "react";
 import { closeView, openView } from "../utils";
 import {
-  ViewEventType,
+  ViewEventTypeEnum,
   ViewEvents,
   ViewInfo,
   ViewEventArg,
   ViewContextType,
   ViewType,
   CloseType,
+  ViewUpdateEventArg,
+  ViewEventType,
 } from "../@types";
 
 export const ViewContext = createContext<ViewContextType>({} as any);
@@ -16,10 +18,7 @@ export const ViewContextProvider = memo(
   ({ children, viewInfo }: { children: ReactNode; viewInfo: ViewInfo }) => {
     const eventListeners = useRef<any>({});
 
-    const addEvent = (
-      type: ViewEventType,
-      event?: (e: ViewEventArg) => void,
-    ) => {
+    const addEvent = (type: ViewEventTypeEnum, event?: ViewEventType) => {
       if (!event) {
         return;
       }
@@ -30,10 +29,7 @@ export const ViewContextProvider = memo(
       listener.push(event);
     };
 
-    const removeEvent = (
-      type: ViewEventType,
-      event?: (e: ViewEventArg) => void,
-    ) => {
+    const removeEvent = (type: ViewEventTypeEnum, event?: ViewEventType) => {
       if (!event) {
         return;
       }
@@ -42,18 +38,23 @@ export const ViewContextProvider = memo(
     };
 
     const listenEvents = (events: ViewEvents) => {
-      addEvent(ViewEventType.onEnter, events.onEnter);
-      addEvent(ViewEventType.onLeave, events.onLeave);
-      addEvent(ViewEventType.onClosing, events.onClosing);
+      addEvent(ViewEventTypeEnum.onEnter, events.onEnter);
+      addEvent(ViewEventTypeEnum.onLeave, events.onLeave);
+      addEvent(ViewEventTypeEnum.onClosing, events.onClosing);
+      addEvent(ViewEventTypeEnum.onUpdate, events.onUpdate);
       return () => {
-        removeEvent(ViewEventType.onEnter, events.onEnter);
-        removeEvent(ViewEventType.onLeave, events.onLeave);
-        removeEvent(ViewEventType.onClosing, events.onClosing);
+        removeEvent(ViewEventTypeEnum.onEnter, events.onEnter);
+        removeEvent(ViewEventTypeEnum.onLeave, events.onLeave);
+        removeEvent(ViewEventTypeEnum.onClosing, events.onClosing);
+        removeEvent(ViewEventTypeEnum.onUpdate, events.onUpdate);
       };
     };
 
-    const emitEvent = (type: ViewEventType, e: ViewEventArg) => {
-      const listeners: ((e: ViewEventArg) => void)[] =
+    const emitEvent = (
+      type: ViewEventTypeEnum,
+      e: ViewEventArg | ViewUpdateEventArg,
+    ) => {
+      const listeners: ((e: ViewEventArg | ViewUpdateEventArg) => void)[] =
         eventListeners.current[type];
       listeners?.forEach((listener) => {
         listener(e);
@@ -75,13 +76,16 @@ export const ViewContextProvider = memo(
     useEffect(() => {
       viewInfo.events = {
         onEnter: (e: ViewEventArg) => {
-          emitEvent(ViewEventType.onEnter, e);
+          emitEvent(ViewEventTypeEnum.onEnter, e);
         },
         onLeave: (e: ViewEventArg) => {
-          emitEvent(ViewEventType.onLeave, e);
+          emitEvent(ViewEventTypeEnum.onLeave, e);
         },
         onClosing: (e: ViewEventArg) => {
-          emitEvent(ViewEventType.onClosing, e);
+          emitEvent(ViewEventTypeEnum.onClosing, e);
+        },
+        onUpdate: (e: ViewUpdateEventArg) => {
+          emitEvent(ViewEventTypeEnum.onUpdate, e);
         },
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps

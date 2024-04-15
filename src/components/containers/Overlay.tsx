@@ -1,4 +1,4 @@
-import { MutableRefObject, ReactNode, forwardRef } from "react";
+import { MutableRefObject, ReactNode, forwardRef, useEffect } from "react";
 import { OverlayPositionType } from "../../@types";
 import { useFn, useInit, useOverlay } from "../../hooks";
 
@@ -28,7 +28,15 @@ export const Overlay = forwardRef<
     config.current?.hide?.();
   });
 
+  useEffect(() => {
+    config.current?.update?.(props.children);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.children]);
+
   useInit(() => {
+    if (!ref) {
+      ref = {} as any;
+    }
     (ref! as MutableRefObject<any>).current = {
       toggle,
       hide,
