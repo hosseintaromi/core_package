@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.16](https://gitlab.com/aseman/web/packages-core/compare/v0.1.15...v0.1.16) (2024-04-15)
+
+
+### Features
+
+* update ViewComponent when changed children ([f3aac51](https://gitlab.com/aseman/web/packages-core/commit/f3aac515fd16a6a906350f7c0b238c93351e9ebd))
+
 ## [0.1.15](https://gitlab.com/aseman/web/packages-core/compare/v0.1.14...v0.1.15) (2024-04-13)
 
 
