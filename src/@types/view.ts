@@ -1,6 +1,6 @@
 import { LazyExoticComponent } from "react";
 
-export enum ViewEventType {
+export enum ViewEventTypeEnum {
   onInit = "onInit",
   onEnter = "onEnter",
   onLeave = "onLeave",
@@ -84,9 +84,9 @@ export interface ViewEvents {
 
 export interface ViewContextType {
   listenEvents: (events: ViewEvents) => () => void;
-  emitEvent: <T = ViewEventArg | ViewUpdateEventArg>(
-    type: ViewEventType,
-    e: T,
+  emitEvent: (
+    type: ViewEventTypeEnum,
+    e: ViewEventArg | ViewUpdateEventArg,
   ) => void;
   getViewData: () => any;
   close?: <T>(type: CloseType, res?: T) => void;
@@ -130,3 +130,7 @@ export interface HistoryItem {
   id: string;
   back: () => void;
 }
+
+export type ViewEventType =
+  | ((e: ViewEventArg) => void)
+  | ((e: ViewUpdateEventArg) => void);
