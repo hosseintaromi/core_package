@@ -68,7 +68,7 @@ export async function openView<T = any>(
       return;
     }
 
-    if (isViewInProgress(view.type, view.id)) {
+    if (isViewInProgress(view.type, view.id, "open")) {
       return;
     }
 
@@ -99,7 +99,7 @@ export async function openView<T = any>(
       });
     }
 
-    setViewInProgress(view.type, view.id, true);
+    setViewInProgress(view.type, view.id, true, "open");
     if (foundView) {
       await container.activateView?.(foundView);
       moveViewToTop(foundView);
@@ -110,9 +110,9 @@ export async function openView<T = any>(
       view.onOpened?.();
       addToLoadedViewStack(view as ViewType<T>);
     }
-    setViewInProgress(view.type, view.id, false);
+    setViewInProgress(view.type, view.id, false, "open");
   } catch (error) {
-    setViewInProgress(view.type, view.id!, false);
+    setViewInProgress(view.type, view.id!, false, "open");
   }
 }
 
@@ -131,7 +131,7 @@ export async function closeView<T>(
       return;
     }
 
-    if (isViewInProgress(containerType, viewId)) {
+    if (isViewInProgress(containerType, viewId, "close")) {
       return;
     }
 
@@ -164,15 +164,15 @@ export async function closeView<T>(
     if (!container.config?.disableBrowserHistory) {
       unListenBack(viewId);
     }
-    setViewInProgress(containerType, viewId, true);
+    setViewInProgress(containerType, viewId, true, "close");
     closingView.onClose?.(res);
     await container.closeView(closingView, topViewWithSameType, closeType);
     closingView.onClosed?.(res);
     updateViewsByCloseType(container.views, closeType, index);
     removeFromLoadedViewStack(closingView, closeType);
-    setViewInProgress(containerType, viewId, false);
+    setViewInProgress(containerType, viewId, false, "close");
   } catch {
-    setViewInProgress(containerType, viewId, false);
+    setViewInProgress(containerType, viewId, false, "close");
   }
 }
 
@@ -272,9 +272,15 @@ function getTopViewFromStack(
   }
 }
 
-function isViewInProgress(containerType: string, viewId: string) {
+function isViewInProgress(
+  containerType: string,
+  viewId: string,
+  progressType: "open" | "close",
+) {
   return (
-    (progressViews[containerType] || []).findIndex((id) => id === viewId) > -1
+    (progressViews[containerType] || []).findIndex(
+      (id) => id === `${viewId}_${progressType}`,
+    ) > -1
   );
 }
 
@@ -282,14 +288,15 @@ function setViewInProgress(
   containerType: string,
   viewId: string,
   progress: boolean,
+  progressType: "open" | "close",
 ) {
   let views = progressViews[containerType];
   if (!views) {
     views = progressViews[containerType] = [];
   }
+  views.remove((id) => id === `${viewId}_close`);
+  views.remove((id) => id === `${viewId}_open`);
   if (progress) {
-    views.safePush(viewId);
-  } else {
-    views.remove((id) => id === viewId);
+    views.safePush(`${viewId}_${progressType}`);
   }
 }

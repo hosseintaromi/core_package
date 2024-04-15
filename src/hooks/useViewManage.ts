@@ -32,11 +32,13 @@ export const useViewManage = (
 ) => {
   const [viewsInfo, setViewsInfo] = useState<ViewInfo[]>([]);
   const activeViewIdRef = useRef<string>("");
+  const viewAnimateRef = useRef<any>({});
   const initRef = useRef<boolean>(false);
   const { requestAnimate } = useAnimate();
 
   const handleViewEvent = useFn(
     <T extends ViewEventConfigBase>(
+      id: string,
       newView: ViewRef,
       prevView?: ViewRef,
       event?: ViewEvent,
@@ -54,12 +56,15 @@ export const useViewManage = (
           return;
         }
         document.body.classList.add("animating");
-        requestAnimate(
+        const animateRef = viewAnimateRef.current;
+        animateRef[id]?.();
+        animateRef[id] = requestAnimate(
           event.duration,
           (t: number) => {
             event?.animate?.(t, newView, prevView, config);
           },
           () => {
+            delete animateRef[id];
             event?.end?.(newView, prevView, config);
             document.body.classList.remove("animating");
             resolve(true);
@@ -91,6 +96,7 @@ export const useViewManage = (
               return;
             }
             await handleViewEvent(
+              newView.id,
               {
                 view: newView,
                 ref: newViewInfo.elRef as any,
@@ -148,6 +154,7 @@ export const useViewManage = (
       });
 
       await handleViewEvent<ViewEventConfigClose>(
+        view.id,
         {
           view: viewsInfo[index].view,
           ref: viewsInfo[index].elRef as any,
@@ -188,6 +195,7 @@ export const useViewManage = (
     );
     activeViewIdRef.current = view.id;
     await handleViewEvent(
+      view.id,
       {
         view: viewInfo.view,
         ref: viewInfo.elRef as any,
@@ -220,6 +228,7 @@ export const useViewManage = (
         return;
       }
       await handleViewEvent(
+        fromView.id,
         {
           view: activeViewInfo.view,
           ref: activeViewInfo.elRef as any,
