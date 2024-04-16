@@ -9,9 +9,9 @@ const ClickAsyncComponent = () => {
   const toggle = (e: any) => overlayRef.current?.toggle(e);
 
   useInit(() => {
-    setTimeout(() => {
-      setName("saaed");
-    }, 5000);
+    // setTimeout(() => {
+    //   setName("saaed");
+    // }, 10000);
   });
 
   return (
