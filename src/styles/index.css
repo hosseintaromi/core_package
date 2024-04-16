@@ -104,3 +104,7 @@ body {
   position: absolute;
   inset: 0;
 }
+
+.overlay-container .view-wrapper{
+  position: absolute;
+}
