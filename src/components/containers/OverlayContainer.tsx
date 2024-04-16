@@ -96,9 +96,6 @@ export const OverlayContainer = () => {
         // eslint-disable-next-line no-restricted-globals
         addEventListener("resize", setPos);
         setPos();
-        setStyle(newViewEl, {
-          position: "fixed",
-        });
         setStyle(backDropRef.current, {
           display: "block",
           opacity: "0",
