@@ -1,6 +1,7 @@
 import { ModalContainer, ToastContainer } from "../components";
 import { MessageType } from "../@types";
-import { openAlert, openConfirm, openToast } from "../utils";
+import { openAlert, openConfirm, openToast, openView } from "../utils";
+import { Modal } from "../components/Modal";
 
 interface Props {
   message: string;
@@ -25,6 +26,12 @@ export default function ToastSample({ message, type }: Props) {
     openConfirm({
       message: "پیام Confirm اینجا نمایش داده می شود.",
       title: "هشدار",
+    });
+  };
+  const openMdl = () => {
+    openView({
+      component: Modal,
+      type: "Modal",
     });
   };
 
@@ -103,6 +110,31 @@ export default function ToastSample({ message, type }: Props) {
           onClick={() => openCfm()}
         >
           Open Confirm
+        </button>
+      </div>
+      <div style={{ margin: "1rem" }}>
+        <button
+          style={{
+            display: "inline-block",
+            padding: "0.375rem 0.75rem",
+            fontSize: "1rem",
+            fontWeight: "400",
+            lineHeight: "1.5",
+            color: "#fff",
+            textAlign: "center",
+            textDecoration: "none",
+            verticalAlign: "middle",
+            cursor: "pointer",
+            userSelect: "none",
+            border: "1px solid #029CFD",
+            borderRadius: ".5rem",
+            backgroundColor: "#029CFD",
+            transition:
+              "color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+          }}
+          onClick={() => openMdl()}
+        >
+          Open Modal
         </button>
       </div>
       <ToastContainer />
