@@ -1,5 +1,5 @@
 import { Fragment, useRef } from "react";
-import { bezier, closeView } from "../../utils";
+import { bezier, closeView, setStyle, setStyleVar } from "../../utils";
 import { useViewManage } from "../../hooks";
 import { ViewEvent, ViewContainerType } from "../../@types";
 import { ViewContextProvider } from "../../context/ViewContextProvider";
@@ -16,14 +16,16 @@ export const ModalContainer = () => {
     {
       duration: 300,
       start(newView, prevView) {
-        const newViewStyle = newView.ref.style;
-        newViewStyle.display = "block";
-        newViewStyle.opacity = "0";
-        newViewStyle.marginTop = `${-newView.ref.offsetHeight / 2}px`;
         const length = viewsInfo.length;
-        newViewStyle.zIndex = `${1000 + length + 1}`;
-        newViewStyle.transform = "translateY(20%)";
-
+        setStyle(newView.ref, {
+          display: "block",
+          opacity: "0",
+          zIndex: `${1000 + length + 1}`,
+          transform: "translateY(20%)",
+        });
+        setStyleVar(newView.ref, {
+          "--view-height": `${newView.ref.offsetHeight}`,
+        });
         if (prevView?.ref) {
           prevView.ref.style.zIndex = `${1000 + length - 1}`;
         }

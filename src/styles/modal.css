@@ -7,6 +7,46 @@
   bottom: 0;
   z-index: 2;
 }
+.modal-container .view-wrapper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin-top: calc(var(--view-height)/ 2 * -1px);
+}
+@media (min-width: 768px) {
+  .modal-container .view-wrapper {
+    width: 600px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-container .view-wrapper {
+    width: 800px;
+  }
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #171717;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: none;
+  border-radius: .5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  outline: 0;
+}
+.modal-header,
+.modal-body {
+  padding: .5rem 1rem;
+}
+.modal-header {
+  border-bottom: 1px solid #ddd;
+}
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.32);
   position: fixed;
