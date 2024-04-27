@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.26](https://gitlab.com/aseman/web/packages-core/compare/v0.1.25...v0.1.26) (2024-04-27)
+
+
+### Bug Fixes
+
+* :bug: fix modal styles ([218d268](https://gitlab.com/aseman/web/packages-core/commit/218d2681636077d6223124eda23fa259242955d0))
+* :bug: remove path in modal component ([adb02c2](https://gitlab.com/aseman/web/packages-core/commit/adb02c2abe9bc4601e4dde28b1115968752a7f7d))
+
 ## [0.1.25](https://gitlab.com/aseman/web/packages-core/compare/v0.1.24...v0.1.25) (2024-04-27)
 
 ## [0.1.24](https://gitlab.com/aseman/web/packages-core/compare/v0.1.23...v0.1.24) (2024-04-27)
