@@ -18,3 +18,4 @@ export * from "./useIntersectionObserver";
 export * from "./useLazyLoadImage";
 export * from "./useSaveScroll";
 export * from "./useWindowResize";
+export * from "./useChangeView";
