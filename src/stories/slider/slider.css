@@ -1,0 +1,38 @@
+.hidden {
+  display: none;
+}
+
+.slider-container {
+  position: relative;
+  height: 300px;
+}
+
+.slider-container .view-wrapper {
+  display: none;
+}
+
+.slide-tabs {
+  position: relative;
+}
+
+.slide-tabs .item {
+  display: inline-block;
+  list-style-type: none;
+  padding: 5px 10px 11px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-tabs .pointer {
+  position: absolute;
+  height: 4px;
+  bottom: 0;
+  background: #c59ece;
+  width: 100%;
+  /* border-radius: 3px 3px 0 0; */
+  left: 0;
+  transform-origin: top left;
+  will-change: transform;
+  border-radius: 5px 5px 0 0;
+
+}

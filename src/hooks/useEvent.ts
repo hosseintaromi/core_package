@@ -58,11 +58,11 @@ export const useEvent = (
   const getCurrentTime = () => Date.now();
 
   const getTouchEvent = (e: Event | any) => {
-    if (!e.touches) {
+    if (e.touches && e.touches.length === 0) {
       return;
     }
     const startPosition = startPositionRef.current;
-    const touch = e.touches[e.touches.length - 1];
+    const touch = e.touches ? e.touches[e.touches.length - 1] : {};
     const x = e.clientX || touch.clientX;
     const y = e.clientY || touch.clientY;
     return {
