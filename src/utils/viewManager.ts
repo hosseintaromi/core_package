@@ -37,6 +37,7 @@ export function registerContainer(
 
   viewContainers[containerName] = {
     views: [],
+    listeners: [],
     containerOrder,
     config,
     openView,
@@ -102,10 +103,12 @@ export async function openView<T = any>(
     setViewInProgress(view.type, view.id, true, "open");
     if (foundView) {
       await container.activateView?.(foundView);
+      emitOnChangeView(container, foundView as any);
       moveViewToTop(foundView);
     } else {
       container.views.push(view as ViewType<T>);
       view.onOpen?.();
+      emitOnChangeView(container, view as any);
       await container.openView(view as ViewType<T>);
       view.onOpened?.();
       addToLoadedViewStack(view as ViewType<T>);
@@ -223,6 +226,29 @@ export function getViewsByCloseType(
     case "Current":
       return views[index];
   }
+}
+
+export function listenOnChangeView(
+  containerType: string,
+  onChange: (view: ViewType<any>) => void,
+) {
+  const container = viewContainers[containerType];
+  if (!container) {
+    return () => {};
+  }
+  container.listeners.push(onChange);
+  return () => {
+    container.listeners.remove((x) => x === onChange);
+  };
+}
+
+function emitOnChangeView(
+  container: ViewContainerDataType,
+  view: ViewType<any>,
+) {
+  container.listeners.forEach((subscriber) => {
+    subscriber?.apply(subscriber, [view]);
+  });
 }
 
 function addToLoadedViewStack(view: ViewType<any>) {

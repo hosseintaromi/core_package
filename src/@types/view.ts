@@ -73,6 +73,7 @@ export interface ViewContainerDataType {
     eventType: ChangeContainerEventType,
   ) => Promise<any>;
   updateView?: (viewUpdate: ViewUpdateEventArg) => void;
+  listeners: ((view: ViewType<any>) => void)[];
 }
 
 export interface ViewEvents {
