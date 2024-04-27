@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.27](https://gitlab.com/aseman/web/packages-core/compare/v0.1.26...v0.1.27) (2024-04-27)
+
+
+### Bug Fixes
+
+* call onChangeView in first init ([5813e45](https://gitlab.com/aseman/web/packages-core/commit/5813e4545cdcd409108e8e73a8d3c11b7a34494e))
+
 ## [0.1.26](https://gitlab.com/aseman/web/packages-core/compare/v0.1.25...v0.1.26) (2024-04-27)
 
 
