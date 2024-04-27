@@ -169,6 +169,9 @@ export async function closeView<T>(
     }
     setViewInProgress(containerType, viewId, true, "close");
     closingView.onClose?.(res);
+    if (topViewWithSameType) {
+      emitOnChangeView(container, topViewWithSameType);
+    }
     await container.closeView(closingView, topViewWithSameType, closeType);
     closingView.onClosed?.(res);
     updateViewsByCloseType(container.views, closeType, index);
@@ -237,6 +240,9 @@ export function listenOnChangeView(
     return () => {};
   }
   container.listeners.push(onChange);
+  if (container.views.length > 0) {
+    onChange(container.views.last());
+  }
   return () => {
     container.listeners.remove((x) => x === onChange);
   };
