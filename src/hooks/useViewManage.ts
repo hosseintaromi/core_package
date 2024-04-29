@@ -268,6 +268,64 @@ export const useViewManage = (
     },
   );
 
+  const sweepCloseView = useFn(
+    async (
+      view: ViewType<any>,
+      newActiveView: ViewType<any> | undefined,
+      closeType: CloseType,
+    ) => {
+      let activeViewInfo: ViewInfo | undefined;
+      activeViewIdRef.current = "";
+      if (newActiveView) {
+        activeViewIdRef.current = newActiveView.id;
+        activeViewInfo = viewsInfo.find((x) => x.id === newActiveView.id);
+      }
+
+      const index = viewsInfo.findIndex((x) => x.id === view.id);
+      if (index < 0) {
+        return;
+      }
+
+      const closeViewInfo = viewsInfo[index];
+      const disableAnimate =
+        !config?.moveBetweenViews && index < viewsInfo.length - 1;
+      closeViewInfo.events?.onClosing?.({
+        toView: newActiveView,
+      });
+
+      try {
+        await handleViewEvent<ViewEventConfigClose>(
+          view.id,
+          {
+            view: viewsInfo[index].view,
+            ref: viewsInfo[index].elRef as any,
+          },
+          activeViewInfo
+            ? {
+                view: activeViewInfo.view,
+                ref: activeViewInfo.elRef as any,
+              }
+            : undefined,
+          closeConfig,
+          { disableAnimate, closeType },
+        );
+      } catch {
+        throw Error("Canceled");
+      }
+
+      if (activeViewInfo) {
+        activeViewInfo.events?.onEnter?.({
+          fromView: closeViewInfo.view,
+        });
+      }
+
+      if (index > -1) {
+        updateViewsByCloseType(viewsInfo, closeType, index);
+        setViewsInfo([...viewsInfo]);
+      }
+    },
+  );
+
   const updateView = useFn((viewUpdate: ViewUpdateEventArg) => {
     const activeViewInfo = viewsInfo.find(
       (x) => x.id === activeViewIdRef.current,

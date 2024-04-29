@@ -1,4 +1,5 @@
 import "./styles/index.css";
+import "./styles/bottomSheet.css";
 
 export * from "./@types";
 export * from "./components";
