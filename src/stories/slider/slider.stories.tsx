@@ -23,6 +23,8 @@ const SliderComponent = () => {
                 { title: "Groups", component: MenuInlineSample2 },
                 { title: "Private Chats", component: MenuInlineSample3 },
               ],
+              hasPointer: true,
+              firstIndex: 2,
               elRef: elRef as any,
               className: "slide-menu",
             }}

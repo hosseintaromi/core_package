@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useCallback, useEffect, useRef } from "react";
+import React, { MutableRefObject, useEffect, useRef } from "react";
 import { ViewComponent } from "../ViewComponent";
 import { useViewManage } from "../../hooks/useViewManage";
 import { openView } from "../../utils/viewManager";
@@ -7,13 +7,14 @@ import { useAnimate } from "../../hooks/useAnimate";
 import { setStyle } from "../../utils";
 import { ViewContextProvider } from "../../context/ViewContextProvider";
 import { clientWidth, querySelectorAll } from "../../utils/dom-utils";
+import { ViewInfo } from "../../@types";
+import { useFn, useInit } from "../../hooks";
 
 interface MoveInfo {
   from: number;
   to: number;
   percent: number;
-  moveX: number;
-  totalXMove: number;
+  totalMoveX: number;
 }
 
 export interface SlideComponent {
@@ -28,8 +29,10 @@ export interface SlideInlineData<T, U> {
   elRef?: MutableRefObject<HTMLElement>;
   data?: T;
   title?: string;
+  hasPointer?: boolean;
   className?: string;
   components: SlideComponent[];
+  firstIndex?: number;
   onClose?: (res?: U) => void;
   mapDataTo?: (data?: T) => any;
   show?: (show: boolean) => void;
@@ -46,7 +49,6 @@ const SlideContainer = <T, U>({
   const maxDuration = 500;
   const minDuration = 150;
   const components = config.components;
-  // const slideIn = bezier(0.25, 1, 0.5, 1);
 
   const containerRef = useRef<any>(null);
   const viewIndexRef = useRef<number>(0);
@@ -63,7 +65,14 @@ const SlideContainer = <T, U>({
     disableBrowserHistory: true,
   });
 
+  const viewsInfoRef = useRef<ViewInfo[]>();
+
+  const getViews = () => viewsInfoRef.current || [];
+
   const setPointerPos = (from: number, to: number, percent: number) => {
+    if (!config.hasPointer) {
+      return;
+    }
     if (from === to) {
       return;
     }
@@ -79,7 +88,7 @@ const SlideContainer = <T, U>({
     const baseWidth = clientWidth(childsEl[0]);
     const fromEl = childsEl[from];
     const toEl = childsEl[to];
-    const fromScale = (1 * fromEl.clientWidth) / baseWidth;
+    const fromScale = fromEl ? (1 * fromEl.clientWidth) / baseWidth : 0;
     const toScale = (1 * toEl.clientWidth) / baseWidth;
     const pointerEl: HTMLElement = pointerRef.current;
     const scale = fromScale + ((toScale - fromScale) * percent) / 100;
@@ -88,44 +97,36 @@ const SlideContainer = <T, U>({
         fromOffset + ((toOffset - fromOffset) * percent) / 100
       }px) scaleX(${scale})`,
     });
-
-    for (const child of pointerEl.children as any) {
-      setStyle(child, { transform: `scaleX(${1 / scale})` });
-    }
   };
 
-  const openConfigView = useCallback(
-    async (index: number) => {
-      let viewInfo = viewsInfo.find((x) => x.id === `${index}`);
-      if (viewInfo) {
-        return;
-      }
-      await openView({
-        id: `${index}`,
-        type: containerType,
-        component: config.components[index].component,
-        data: config.data,
-        className: config.className,
-        options: { disableAnimate: true, inBackground: index > 0 },
+  const openConfigView = useFn(async (index: number, init?: boolean) => {
+    let viewInfo = getViews().find((x) => x.id === `${index}`);
+    if (viewInfo) {
+      return;
+    }
+    await openView({
+      id: `${index}`,
+      type: containerType,
+      component: config.components[index].component,
+      data: config.data,
+      className: config.className,
+      options: { disableAnimate: true, inBackground: index > 0 },
+    });
+    viewInfo = getViews().find((x) => x.id === `${index}`);
+    const ref = viewInfo?.elRef;
+    if (ref) {
+      setStyle(ref, {
+        display: "block",
+        transform: `translateX(${init ? "0" : "100"}%)`,
       });
-      viewInfo = viewsInfo.find((x) => x.id === `${index}`);
-      const ref = viewInfo?.elRef;
-      if (ref) {
-        setStyle(ref, { display: "block" });
-        if (index > 0) {
-          setStyle(ref, { transform: `translateX(100%)` });
-        }
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
-  );
+    }
+  });
 
   const getView = (index: number) => {
     if (index < 0 || index > lastViewIndex) {
       return;
     }
-    const view = viewsInfo.find((x) => x.id === `${index}`);
+    const view = getViews().find((x) => x.id === `${index}`);
     if (!view) {
       openConfigView(index);
     }
@@ -146,8 +147,8 @@ const SlideContainer = <T, U>({
 
     setPointerPos(fromIndex, toIndex, percent);
 
-    hideViews(viewsInfo.map((x) => x.elRef));
-    if (from) {
+    hideViews(getViews().map((x) => x.elRef));
+    if (from && fromIndex !== toIndex) {
       const style1 = from.style;
       style1.transform = `translateX(${direction * percent}%)`;
       style1.display = "block";
@@ -162,47 +163,46 @@ const SlideContainer = <T, U>({
 
   const getContainerWidth = () => containerRef.current.clientWidth;
 
-  const getNewXMove = (index: number, moveX: number) => {
+  const getNewMoveX = (index: number, moveX: number) => {
     const containerWidth = getContainerWidth();
-    let totalXMove = startMoveXRef.current + moveX;
-    if (totalXMove >= 0) {
-      const maxMoveX = index * containerWidth;
-      totalXMove = Math.min(maxMoveX, totalXMove);
+    let totalMoveX = startMoveXRef.current + moveX;
+    let finish = false;
+    if (totalMoveX >= 0) {
+      const maxMove = index * containerWidth;
+      totalMoveX = Math.min(maxMove, totalMoveX);
+      finish = maxMove <= totalMoveX;
     } else {
       const minMove = (index - lastViewIndex) * containerWidth;
-      totalXMove = Math.max(minMove, totalXMove);
+      totalMoveX = Math.max(minMove, totalMoveX);
+      finish = minMove >= totalMoveX;
     }
+
     const moveViewCount =
-      (totalXMove <= 0 ? 1 : -1) *
-      Math.ceil(Math.abs(totalXMove / containerWidth));
-    const newXMove =
-      totalXMove % containerWidth === 0 && totalXMove !== 0
-        ? containerWidth
-        : totalXMove % containerWidth;
+      (totalMoveX <= 0 ? 1 : -1) *
+      Math.ceil(Math.abs(totalMoveX / containerWidth));
+    const absTotalMoveX = Math.abs(totalMoveX);
+    const viewMoveX =
+      absTotalMoveX > containerWidth
+        ? absTotalMoveX % containerWidth
+        : absTotalMoveX;
+
     let to = index + moveViewCount;
-    const percent = (Math.abs(newXMove) / containerWidth) * 100;
+    let from = totalMoveX < 0 ? to - 1 : Math.min(lastViewIndex, to + 1);
     return {
-      from: totalXMove < 0 ? to - 1 : Math.min(lastViewIndex, to + 1),
+      from: finish ? to : from,
       to,
-      percent,
-      moveX: newXMove,
-      totalXMove,
+      percent: finish ? 100 : (viewMoveX * 100) / containerWidth,
+      totalMoveX,
     } as MoveInfo;
   };
 
   const sweep = (e: TouchEvent) => {
-    const moveInfo = getNewXMove(viewIndexRef.current, e.moveX);
-    // if (viewIndexRef.current <= moveInfo.to && e.moveX >= 0) {
-    //   return;
-    // }
-    // if (viewIndexRef.current >= moveInfo.to && e.moveX <= 0) {
-    //   return;
-    // }
+    const moveInfo = getNewMoveX(viewIndexRef.current, e.moveX);
     transform(moveInfo.percent, moveInfo.from, moveInfo.to);
   };
 
   const animate = (moveX: number) => {
-    const moveInfo = getNewXMove(viewIndexRef.current, moveX);
+    const moveInfo = getNewMoveX(viewIndexRef.current, moveX);
     const currentPercent = moveInfo.percent;
     if (currentPercent === 0) {
       startMoveXRef.current = 0;
@@ -218,7 +218,7 @@ const SlideContainer = <T, U>({
     const containerWidth = getContainerWidth();
     const touchDuration =
       ((backward ? containerWidth - moveX : moveX) * touchTime) / moveX;
-    startMoveXRef.current = moveInfo.totalXMove;
+    startMoveXRef.current = moveInfo.totalMoveX;
     const duration = Math.max(
       remainPercent * minDuration,
       Math.min(touchDuration, remainPercent * maxDuration),
@@ -230,7 +230,7 @@ const SlideContainer = <T, U>({
         const percent = backward
           ? currentPercent * (1 - t)
           : currentPercent + (100 - currentPercent) * t;
-        startMoveXRef.current = moveInfo.totalXMove;
+        startMoveXRef.current = moveInfo.totalMoveX;
         transform(percent, moveInfo.from, moveInfo.to);
       },
       () => {
@@ -238,6 +238,45 @@ const SlideContainer = <T, U>({
         viewIndexRef.current = backward ? moveInfo.from : moveInfo.to;
       },
     );
+  };
+
+  const transfromWithAnimate = (duration: number, from: number, to: number) => {
+    animateRequestRef.current = requestAnimate(
+      duration,
+      (t) => {
+        transform(t * 100, from, to);
+      },
+      () => {
+        startMoveXRef.current = 0;
+        viewIndexRef.current = to;
+      },
+    );
+  };
+
+  const goToIndex = (index: number) => {
+    if (index !== viewIndexRef.current) {
+      transfromWithAnimate(200, viewIndexRef.current, index);
+    }
+  };
+
+  const initPointer = (index: number) => {
+    if (!config.hasPointer) {
+      return;
+    }
+    const childsEl = (pointerContainerRef.current as HTMLElement).children;
+    const pointerEl: HTMLElement = pointerRef.current;
+    setStyle(pointerEl, {
+      width: `${clientWidth(childsEl[0])}px`,
+      display: "block",
+    });
+    setPointerPos(-1, index, 100);
+  };
+
+  const initView = (index: number) => {
+    viewIndexRef.current = index;
+    initPointer(index);
+    hideViews(components.map((x) => x.ref));
+    openConfigView(index, true);
   };
 
   useEvent(containerRef, EventType.HorizontalSwipe, {
@@ -259,54 +298,26 @@ const SlideContainer = <T, U>({
     },
   });
 
-  const setPointerStartPos = (index: number) => {
-    const childsEl = (pointerContainerRef.current as HTMLElement).children;
-    let offset = 0;
-    for (let i = 0; i < index; i++) {
-      offset += childsEl[i].clientWidth;
-    }
-    const pointerEl: HTMLElement = pointerRef.current;
-
-    setStyle(pointerEl, {
-      width: `${clientWidth(childsEl[index])}px`,
-      left: `${offset}px`,
-    });
-  };
-
-  const transfromWithAnimate = (duration: number, from: number, to: number) => {
-    animateRequestRef.current = requestAnimate(
-      duration,
-      (t) => {
-        transform(t * 100, from, to);
-      },
-      () => {
-        startMoveXRef.current = 0;
-        viewIndexRef.current = to;
-      },
-    );
-  };
-
-  const goToIndex = (index: number) => {
-    transfromWithAnimate(200, viewIndexRef.current, index);
-  };
-
   useEffect(() => {
-    hideViews(components.map((x) => x.ref));
-    setPointerStartPos(0);
-    openConfigView(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    viewsInfoRef.current = viewsInfo;
+  }, [viewsInfo]);
+
+  useInit(() => {
+    initView(config.firstIndex || 0);
+  });
 
   return (
     <div ref={containerRef} className="slide-inline-container">
-      <div className="slide-tabs" ref={pointerContainerRef}>
-        {config.components?.map((component, index) => (
-          <div className="item" key={index} onClick={() => goToIndex(index)}>
-            {component.title}
-          </div>
-        ))}
-        <div className="pointer" ref={pointerRef} />
-      </div>
+      {config.hasPointer && (
+        <div className="slide-tabs" ref={pointerContainerRef}>
+          {config.components?.map((component, index) => (
+            <div className="item" key={index} onClick={() => goToIndex(index)}>
+              {component.title}
+            </div>
+          ))}
+          <div className="pointer" ref={pointerRef} />
+        </div>
+      )}
       <div className="slider-container">
         {viewsInfo?.map((viewInfo) => (
           <React.Fragment key={viewInfo.id}>
