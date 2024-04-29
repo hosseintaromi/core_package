@@ -2,13 +2,22 @@
   display: none;
 }
 
+.slide-inline-container{
+  width: 100%;
+}
+
 .slider-container {
   position: relative;
   height: 300px;
+  overflow: hidden;
 }
 
 .slider-container .view-wrapper {
   display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 .slide-tabs {
@@ -29,10 +38,10 @@
   bottom: 0;
   background: #c59ece;
   width: 100%;
-  /* border-radius: 3px 3px 0 0; */
   left: 0;
   transform-origin: top left;
   will-change: transform;
   border-radius: 5px 5px 0 0;
+  display: none;
 
 }

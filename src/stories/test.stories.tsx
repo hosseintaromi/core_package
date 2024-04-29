@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 
 import { openView } from "../utils";
 import { ViewContainerType } from "../@types";
-import { useInit, useView } from "../hooks";
+import { useChangeView, useInit, useView } from "../hooks";
 import {
   BottomSheetContainer,
   MasterTabContainer,
@@ -81,6 +81,10 @@ function App() {
       data: {},
       component: Test1,
     });
+  });
+
+  useChangeView(ViewContainerType.MasterTab, (view) => {
+    console.log(444, view);
   });
 
   return (
