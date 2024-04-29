@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.28](https://gitlab.com/aseman/web/packages-core/compare/v0.1.27...v0.1.28) (2024-04-29)
+
+
+### Features
+
+* :sparkles: add bottomsheet styles ([8b5b1c9](https://gitlab.com/aseman/web/packages-core/commit/8b5b1c985bf5740086ca3418ebd9f510498479fd))
+
+
+### Bug Fixes
+
+* fixed slider bugs ([b790890](https://gitlab.com/aseman/web/packages-core/commit/b7908904d793da66c12282ee8ca7eb2a81423714))
+
 ## [0.1.27](https://gitlab.com/aseman/web/packages-core/compare/v0.1.26...v0.1.27) (2024-04-27)
 
 
