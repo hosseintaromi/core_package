@@ -38,7 +38,7 @@ export interface SlideInlineData<T, U> {
   show?: (show: boolean) => void;
 }
 
-const SlideContainer = <T, U>({
+export const SlideContainer = <T, U>({
   config,
 }: {
   config: SlideInlineData<T, U>;
@@ -330,5 +330,3 @@ const SlideContainer = <T, U>({
     </div>
   );
 };
-
-export default SlideContainer;
