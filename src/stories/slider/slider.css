@@ -4,6 +4,8 @@
 
 .slide-inline-container{
   width: 100%;
+  position: relative;
+  direction: rtl;
 }
 
 .slider-container {
