@@ -1,6 +1,5 @@
 import { useView } from "../hooks";
 import { MessageAlert, MessageType } from "../@types";
-import "../styles/alert.css";
 
 export function Alert() {
   const { viewData, close } = useView<MessageAlert>({});
