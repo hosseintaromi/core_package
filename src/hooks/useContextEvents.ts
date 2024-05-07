@@ -67,5 +67,3 @@ export const useContextEvents = <Y extends Record<string, string>, T = any>(
     call: eventContext.__events as GenericEvents<Y>,
   };
 };
-
-export default useContextEvents;
