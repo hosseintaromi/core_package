@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.30](https://gitlab.com/aseman/web/packages-core/compare/v0.1.29...v0.1.30) (2024-05-07)
+
+
+### Features
+
+* added observable collection ([c899569](https://gitlab.com/aseman/web/packages-core/commit/c899569e7a3a4f985af05372a78e11f980a13b0d))
+
 ## [0.1.29](https://gitlab.com/aseman/web/packages-core/compare/v0.1.28...v0.1.29) (2024-04-29)
 
 ## [0.1.28](https://gitlab.com/aseman/web/packages-core/compare/v0.1.27...v0.1.28) (2024-04-29)
