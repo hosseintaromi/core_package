@@ -1,11 +1,11 @@
-import { ChatComponent } from "./slider/DataContainer";
+import { MessengerComponent } from "./slider/DataContainer";
 
 export default {
   title: "Core/Chat",
-  component: ChatComponent,
+  component: MessengerComponent,
   argTypes: {},
 };
 export const Info = {
-  render: () => <ChatComponent />,
+  render: () => <MessengerComponent />,
   args: {},
 };

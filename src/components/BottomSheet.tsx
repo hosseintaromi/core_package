@@ -1,5 +1,3 @@
-import "../styles/bottomSheet.css";
-
 export function BottomSheet() {
   return (
     <div>

@@ -31,6 +31,6 @@ export const useView = <T = any>(events?: ViewEvents) => {
     close,
     closeByType,
     openView,
-    viewData: viewContext.getViewData() as T,
+    viewData: viewContext.getViewData?.() as T,
   };
 };

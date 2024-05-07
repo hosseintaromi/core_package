@@ -1,7 +1,5 @@
 import { useView } from "../hooks";
 import { MessageConfirm } from "../@types";
-import "../styles/modal.css";
-import "../styles/confirm.css";
 
 export function Confirm() {
   const { close, viewData } = useView<MessageConfirm>({});

@@ -1,6 +1,3 @@
-import "../styles/modal.css";
-import "../styles/confirm.css";
-
 export function Modal() {
   return (
     <div className="modal-content">

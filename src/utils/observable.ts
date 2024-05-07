@@ -5,6 +5,7 @@ export interface IObservable<T> {
   on: (subscriber: ObservableAction<T>, subject?: T) => void;
   off: (subscriber: ObservableAction<T>, subject?: T) => void;
   emit: (action: string, subject: T) => void;
+  update: (subject: T) => void;
 }
 
 export interface IEventObservable<T, U = any> extends IObservable<T> {
@@ -22,7 +23,7 @@ export class Observable<T> implements IObservable<T> {
     };
   } = {};
 
-  protected getId: (subject: T) => string;
+  public getId: (subject: T) => string;
 
   readonly defaultId = "subscribers";
 
@@ -72,6 +73,15 @@ export class Observable<T> implements IObservable<T> {
       subscriber?.apply(subscriber, [action, subject]);
     });
   }
+
+  update(subject: T) {
+    this.emit("Update", subject);
+  }
+}
+
+export interface ObservableItem<T> {
+  subject: T;
+  observable: Observable<T>;
 }
 
 export class EventObservable<T, U = any> extends Observable<T> {
@@ -100,6 +110,54 @@ export class ObjectObservable<T> extends EventObservable<T> {
     const id = this.getId?.(subject);
     if (id) {
       delete this.observables[id];
+    }
+  }
+}
+
+export class ObservableCollection<T> {
+  private subscribers: ObservableAction<T>[] = [];
+
+  private obsItems: {
+    id: string;
+    subject: any;
+    observable: Observable<any>;
+    on: (action: string, subject: any) => void;
+  }[] = [];
+
+  constructor(
+    observableItems: ObservableItem<T>[],
+    mapTo: (subjects: any[]) => T,
+  ) {
+    this.obsItems = observableItems.map((x) => ({
+      id: x.observable.getId(x.subject),
+      observable: x.observable,
+      subject: x.subject,
+      on: (action: string, subject: any) => {
+        x.subject = subject;
+        const result = mapTo(this.obsItems.map((x) => x.subject));
+        this.subscribers.forEach((subscriber) => {
+          subscriber?.apply(subscriber, [action, result]);
+        });
+      },
+    }));
+  }
+
+  on(subscriber: ObservableAction<T>) {
+    if (this.subscribers.length === 0) {
+      this.obsItems.forEach((item) => {
+        item.observable.on(item.on);
+      });
+    }
+
+    this.subscribers.push(subscriber);
+  }
+
+  off(subscriber: ObservableAction<T>) {
+    this.subscribers.remove((x) => x === subscriber);
+    if (this.subscribers.length === 0) {
+      this.obsItems.forEach((item) => {
+        item.observable.off(item.on);
+      });
     }
   }
 }
